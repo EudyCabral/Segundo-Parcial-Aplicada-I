@@ -70,9 +70,9 @@
             perroIdLabel.AutoSize = true;
             perroIdLabel.Location = new System.Drawing.Point(9, 83);
             perroIdLabel.Name = "perroIdLabel";
-            perroIdLabel.Size = new System.Drawing.Size(47, 13);
+            perroIdLabel.Size = new System.Drawing.Size(22, 13);
             perroIdLabel.TabIndex = 44;
-            perroIdLabel.Text = "Perro Id:";
+            perroIdLabel.Text = " Id:";
             // 
             // personaIdLabel
             // 
@@ -124,9 +124,9 @@
             ventasIdLabel.AutoSize = true;
             ventasIdLabel.Location = new System.Drawing.Point(9, 7);
             ventasIdLabel.Name = "ventasIdLabel";
-            ventasIdLabel.Size = new System.Drawing.Size(55, 13);
+            ventasIdLabel.Size = new System.Drawing.Size(61, 13);
             ventasIdLabel.TabIndex = 32;
-            ventasIdLabel.Text = "Ventas Id:";
+            ventasIdLabel.Text = "principal Id:";
             // 
             // fechaLabel
             // 
@@ -136,6 +136,15 @@
             fechaLabel.Size = new System.Drawing.Size(40, 13);
             fechaLabel.TabIndex = 30;
             fechaLabel.Text = "Fecha:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(555, 343);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(34, 13);
+            label1.TabIndex = 49;
+            label1.Text = "Total:";
             // 
             // Agregarbutton
             // 
@@ -279,15 +288,6 @@
             this.Buscarbutton.Text = "Buscar";
             this.Buscarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Buscarbutton.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(555, 343);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(34, 13);
-            label1.TabIndex = 49;
-            label1.Text = "Total:";
             // 
             // TotaltextBox
             // 
