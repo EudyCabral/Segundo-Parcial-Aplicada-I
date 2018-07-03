@@ -32,6 +32,7 @@
             this.archivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroDeMantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +57,8 @@
             // 
             // registroToolStripMenuItem
             // 
+            this.registroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registroDeMantenimientoToolStripMenuItem});
             this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
             this.registroToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.registroToolStripMenuItem.Text = "Registros";
@@ -65,6 +68,13 @@
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.consultasToolStripMenuItem.Text = "Consultas";
+            // 
+            // registroDeMantenimientoToolStripMenuItem
+            // 
+            this.registroDeMantenimientoToolStripMenuItem.Name = "registroDeMantenimientoToolStripMenuItem";
+            this.registroDeMantenimientoToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.registroDeMantenimientoToolStripMenuItem.Text = "Registro de Mantenimiento";
+            this.registroDeMantenimientoToolStripMenuItem.Click += new System.EventHandler(this.registroDeMantenimientoToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -88,6 +98,7 @@
         private System.Windows.Forms.ToolStripMenuItem archivosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registroDeMantenimientoToolStripMenuItem;
     }
 }
 

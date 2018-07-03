@@ -1,4 +1,0 @@
-create database SegundoParcialDbs
-go
-use SegundoParcialDbs
-go

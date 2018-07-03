@@ -9,11 +9,16 @@ using System.Windows.Forms;
 
 namespace Segundo_Parcial.UI.Registro
 {
-    public partial class ventanauno : Form
+    public partial class RegistroDeMantenimiento : Form
     {
-        public ventanauno()
+        public RegistroDeMantenimiento()
         {
             InitializeComponent();
+        }
+
+        private void TotaltextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

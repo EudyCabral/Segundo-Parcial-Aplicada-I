@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Segundo_Parcial.ENTIDADES;
+using Segundo_Parcial.UI.Registro;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +21,12 @@ namespace Segundo_Parcial
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void registroDeMantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistroDeMantenimiento registrodeMantenimiento = new RegistroDeMantenimiento();
+            registrodeMantenimiento.Show();
         }
     }
 }

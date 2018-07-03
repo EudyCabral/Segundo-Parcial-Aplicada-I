@@ -50,7 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\RegistrodeMantenimientoBLL.cs" />
+    <Compile Include="BLL\VehiculosBLL.cs" />
     <Compile Include="DAL\Contexto.cs" />
+    <Compile Include="DAL\IRepository.cs" />
+    <Compile Include="DAL\Repositorio.cs" />
+    <Compile Include="ENTIDADES\RegistrodeMantenimiento.cs" />
+    <Compile Include="ENTIDADES\RegistrodeMantenimientoDetalle.cs" />
+    <Compile Include="ENTIDADES\Vehiculos.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,23 +72,11 @@
     <Compile Include="UI\Consulta\Consultauno.Designer.cs">
       <DependentUpon>Consultauno.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Registro\detalle.cs">
+    <Compile Include="UI\Registro\RegistroDeMantenimiento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Registro\detalle.Designer.cs">
-      <DependentUpon>detalle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Registro\Ventanados.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Registro\Ventanados.Designer.cs">
-      <DependentUpon>Ventanados.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Registro\ventanauno.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Registro\ventanauno.Designer.cs">
-      <DependentUpon>ventanauno.cs</DependentUpon>
+    <Compile Include="UI\Registro\RegistroDeMantenimiento.Designer.cs">
+      <DependentUpon>RegistroDeMantenimiento.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -99,17 +94,14 @@
     <EmbeddedResource Include="UI\Consulta\Consultauno.resx">
       <DependentUpon>Consultauno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Registro\detalle.resx">
-      <DependentUpon>detalle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Registro\Ventanados.resx">
-      <DependentUpon>Ventanados.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Registro\ventanauno.resx">
-      <DependentUpon>ventanauno.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Registro\RegistroDeMantenimiento.resx">
+      <DependentUpon>RegistroDeMantenimiento.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Segundo_Parcial.ENTIDADES.RegistrodeMantenimiento.datasource" />
+    <None Include="Properties\DataSources\Segundo_Parcial.ENTIDADES.RegistrodeMantenimientoDetalle.datasource" />
+    <None Include="Properties\DataSources\Segundo_Parcial.ENTIDADES.Vehiculos.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,11 +112,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BLL\" />
-    <Folder Include="DAL\Scripts\" />
-    <Folder Include="ENTIDADES\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\icons8_Add_New_32.png" />
   </ItemGroup>
@@ -151,6 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_Print_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\Scripts\Scripts.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
