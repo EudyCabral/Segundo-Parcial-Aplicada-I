@@ -50,13 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\RegistrodeArticulosBLL.cs" />
     <Compile Include="BLL\RegistrodeMantenimientoBLL.cs" />
+    <Compile Include="BLL\RegistroEntradaDeArticulosBLL.cs" />
+    <Compile Include="BLL\TalleresBLL.cs" />
     <Compile Include="BLL\VehiculosBLL.cs" />
     <Compile Include="DAL\Contexto.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\Repositorio.cs" />
+    <Compile Include="ENTIDADES\RegistrodeArticulos.cs" />
     <Compile Include="ENTIDADES\RegistrodeMantenimiento.cs" />
     <Compile Include="ENTIDADES\RegistrodeMantenimientoDetalle.cs" />
+    <Compile Include="ENTIDADES\RegistroEntradaDeArticulos.cs" />
+    <Compile Include="ENTIDADES\Talleres.cs" />
     <Compile Include="ENTIDADES\Vehiculos.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -72,11 +78,35 @@
     <Compile Include="UI\Consulta\Consultauno.Designer.cs">
       <DependentUpon>Consultauno.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Registro\RegistroDeArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registro\RegistroDeArticulos.Designer.cs">
+      <DependentUpon>RegistroDeArticulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Registro\RegistroDeMantenimiento.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Registro\RegistroDeMantenimiento.Designer.cs">
       <DependentUpon>RegistroDeMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registro\RegistrodeTalleres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registro\RegistrodeTalleres.Designer.cs">
+      <DependentUpon>RegistrodeTalleres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registro\RegistrodeVehiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registro\RegistrodeVehiculos.Designer.cs">
+      <DependentUpon>RegistrodeVehiculos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\VentanaRegistroEntradaDeArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\VentanaRegistroEntradaDeArticulos.Designer.cs">
+      <DependentUpon>VentanaRegistroEntradaDeArticulos.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -94,13 +124,28 @@
     <EmbeddedResource Include="UI\Consulta\Consultauno.resx">
       <DependentUpon>Consultauno.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registro\RegistroDeArticulos.resx">
+      <DependentUpon>RegistroDeArticulos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Registro\RegistroDeMantenimiento.resx">
       <DependentUpon>RegistroDeMantenimiento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registro\RegistrodeTalleres.resx">
+      <DependentUpon>RegistrodeTalleres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registro\RegistrodeVehiculos.resx">
+      <DependentUpon>RegistrodeVehiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\VentanaRegistroEntradaDeArticulos.resx">
+      <DependentUpon>VentanaRegistroEntradaDeArticulos.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Segundo_Parcial.ENTIDADES.RegistrodeArticulos.datasource" />
     <None Include="Properties\DataSources\Segundo_Parcial.ENTIDADES.RegistrodeMantenimiento.datasource" />
     <None Include="Properties\DataSources\Segundo_Parcial.ENTIDADES.RegistrodeMantenimientoDetalle.datasource" />
+    <None Include="Properties\DataSources\Segundo_Parcial.ENTIDADES.RegistroEntradaDeArticulos.datasource" />
+    <None Include="Properties\DataSources\Segundo_Parcial.ENTIDADES.Talleres.datasource" />
     <None Include="Properties\DataSources\Segundo_Parcial.ENTIDADES.Vehiculos.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -142,6 +187,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DAL\Scripts\Scripts.sql" />
+    <None Include="Resources\icons8_New_Window_321.png" />
+    <None Include="Resources\icons8_Search_321.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

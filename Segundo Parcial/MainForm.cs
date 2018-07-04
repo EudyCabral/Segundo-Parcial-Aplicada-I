@@ -1,4 +1,5 @@
 ﻿using Segundo_Parcial.ENTIDADES;
+using Segundo_Parcial.UI;
 using Segundo_Parcial.UI.Registro;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,39 @@ namespace Segundo_Parcial
         {
             RegistroDeMantenimiento registrodeMantenimiento = new RegistroDeMantenimiento();
             registrodeMantenimiento.Show();
+        }
+
+        private void registroDeVehiculosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrodeVehiculos registrodeVehiculos = new RegistrodeVehiculos();
+            registrodeVehiculos.Show();
+        }
+
+        private void registroDeTalleresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrodeTalleres registrodeTalleres = new RegistrodeTalleres();
+            registrodeTalleres.Show();
+        }
+
+        private void registroEntradaDeArticulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VentanaRegistroEntradaDeArticulos ventanaRegistroEntradaDeArticulos = new VentanaRegistroEntradaDeArticulos();
+
+            ventanaRegistroEntradaDeArticulos.Show();
+        }
+
+       
+
+        private void registroDeArticulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VentanaRegistroDeArticulos registroDeArticulos = new VentanaRegistroDeArticulos();
+          
+            registroDeArticulos.Show();
+        }
+
+        private void registroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

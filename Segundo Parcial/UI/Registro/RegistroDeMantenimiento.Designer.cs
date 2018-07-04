@@ -96,7 +96,7 @@
             // 
             this.Eliminarbutton.Image = global::Segundo_Parcial.Properties.Resources.icons8_Delete_32;
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Eliminarbutton.Location = new System.Drawing.Point(332, 387);
+            this.Eliminarbutton.Location = new System.Drawing.Point(340, 383);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(75, 55);
             this.Eliminarbutton.TabIndex = 29;
@@ -108,7 +108,7 @@
             // 
             this.Guardarbutton.Image = global::Segundo_Parcial.Properties.Resources.icons8_Save_32;
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Guardarbutton.Location = new System.Drawing.Point(218, 387);
+            this.Guardarbutton.Location = new System.Drawing.Point(226, 383);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(75, 55);
             this.Guardarbutton.TabIndex = 28;
@@ -119,7 +119,7 @@
             // Nuevobutton
             // 
             this.Nuevobutton.Image = global::Segundo_Parcial.Properties.Resources.icons8_New_Window_32;
-            this.Nuevobutton.Location = new System.Drawing.Point(104, 387);
+            this.Nuevobutton.Location = new System.Drawing.Point(112, 383);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(75, 55);
             this.Nuevobutton.TabIndex = 27;
@@ -131,7 +131,7 @@
             // 
             this.Buscarbutton.Image = global::Segundo_Parcial.Properties.Resources.icons8_Search_32;
             this.Buscarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Buscarbutton.Location = new System.Drawing.Point(222, 4);
+            this.Buscarbutton.Location = new System.Drawing.Point(230, 0);
             this.Buscarbutton.Name = "Buscarbutton";
             this.Buscarbutton.Size = new System.Drawing.Size(75, 48);
             this.Buscarbutton.TabIndex = 26;

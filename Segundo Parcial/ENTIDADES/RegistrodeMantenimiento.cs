@@ -12,10 +12,6 @@ namespace Segundo_Parcial.ENTIDADES
         public int MantenimientoId { get; set; }
         public DateTime Fecha { get; set; }
 
-   
-
-    [StringLength(100)]
-        public string Taller { get; set; }
 
         public virtual ICollection<RegistrodeMantenimientoDetalle> Detalle { get; set; }
 
@@ -25,9 +21,9 @@ namespace Segundo_Parcial.ENTIDADES
 
     }
 
-    public void AgregarDetalle(int id, int mantenimientoId, int vehiculoId, string servicio, int cantidad, int precio, int importe)
+    public void AgregarDetalle(int id, int mantenimientoId, int vehiculoId, int tallerId, int articulosId, int cantidad, int precio, int importe)
     {
-        this.Detalle.Add(new RegistrodeMantenimientoDetalle(id,mantenimientoId,vehiculoId,servicio,cantidad,precio, importe));
+        this.Detalle.Add(new RegistrodeMantenimientoDetalle(id, mantenimientoId,vehiculoId,tallerId, articulosId,cantidad,precio,importe));
     }
 }
 }

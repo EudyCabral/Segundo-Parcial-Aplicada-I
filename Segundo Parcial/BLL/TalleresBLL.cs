@@ -9,9 +9,9 @@ using System.Text;
 
 namespace Segundo_Parcial.BLL
 {
-    public class VehiculosBLL
+    public class TalleresBLL
     {
-        public static bool Guardar(Vehiculos vehiculos)
+        public static bool Guardar(Talleres talleres)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -19,7 +19,7 @@ namespace Segundo_Parcial.BLL
             try
             {
 
-                if (contexto.vehiculos.Add(vehiculos) != null)
+                if (contexto.talleres.Add(talleres) != null)
                 {
                     contexto.SaveChanges();
                     paso = true;
@@ -39,11 +39,11 @@ namespace Segundo_Parcial.BLL
 
             try
             {
-                Vehiculos vehiculos = contexto.vehiculos.Find(id);
+                Talleres talleres = contexto.talleres.Find(id);
 
-                if (vehiculos != null)
+                if (talleres != null)
                 {
-                    contexto.Entry(vehiculos).State = EntityState.Deleted;
+                    contexto.Entry(talleres).State = EntityState.Deleted;
                 }
 
                 if (contexto.SaveChanges() > 0)
@@ -59,7 +59,7 @@ namespace Segundo_Parcial.BLL
             return paso;
         }
 
-        public static bool Editar(Vehiculos vehiculos)
+        public static bool Editar(Talleres talleres)
         {
 
             bool paso = false;
@@ -67,7 +67,7 @@ namespace Segundo_Parcial.BLL
 
             try
             {
-                contexto.Entry(vehiculos).State = EntityState.Modified;
+                contexto.Entry(talleres).State = EntityState.Modified;
 
                 if (contexto.SaveChanges() > 0)
                 {
@@ -81,35 +81,37 @@ namespace Segundo_Parcial.BLL
             return paso;
         }
 
-        public static Vehiculos Buscar(int id)
+        public static Talleres  Buscar(int id)
         {
 
-            Vehiculos vehiculos = new Vehiculos();
+            Talleres talleres = new Talleres();
             Contexto contexto = new Contexto();
 
             try
             {
-                vehiculos = contexto.vehiculos.Find(id);
+                talleres = contexto.talleres.Find(id);
                 contexto.Dispose();
             }
             catch (Exception) { throw; }
-            return vehiculos;
+            return talleres;
 
         }
 
-       
 
-        public static List<Vehiculos> GetList(Expression<Func<Vehiculos,bool>>expression)
+
+        public static List<Talleres> GetList(Expression<Func<Talleres, bool>> expression)
         {
-            List<Vehiculos> vehiculos = new List<Vehiculos>();
+            List<Talleres> talleres = new List<Talleres>();
             Contexto contexto = new Contexto();
 
-            try {
-                vehiculos = contexto.vehiculos.Where(expression).ToList();
+            try
+            {
+                talleres = contexto.talleres.Where(expression).ToList();
                 contexto.Dispose();
 
-            } catch (Exception) { throw; }
-            return vehiculos;
+            }
+            catch (Exception) { throw; }
+            return talleres;
         }
     }
 }

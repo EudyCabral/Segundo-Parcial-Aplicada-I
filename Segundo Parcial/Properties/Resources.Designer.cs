@@ -113,6 +113,16 @@ namespace Segundo_Parcial.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_New_Window_321 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_New_Window_321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Person_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Person_32", resourceCulture);
@@ -146,6 +156,16 @@ namespace Segundo_Parcial.Properties {
         internal static System.Drawing.Bitmap icons8_Search_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Search_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Search_321 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Search_321", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -14,7 +14,9 @@ namespace Segundo_Parcial.ENTIDADES
         public int Id { get; set; }
         public int MantenimientoId { get; set; }
         public int VehiculoId { get; set; }
-        public string Servicio { get; set; }
+        public int TallerId { get; set; }
+        public int ArticulosId { get; set; }
+
         public int Cantidad { get; set; }
         public int Precio { get; set; }
         public int Importe { get; set; }
@@ -29,29 +31,25 @@ namespace Segundo_Parcial.ENTIDADES
             MantenimientoId = 0;
         }
 
-  
-        public RegistrodeMantenimientoDetalle(int id, int mantenimientoId, int vehiculoId, string servicio, int cantidad, int precio, int importe)
+        public RegistrodeMantenimientoDetalle(int id, int mantenimientoId, int vehiculoId, int tallerId, int articulosId, int cantidad, int precio, int importe)
         {
             Id = id;
             MantenimientoId = mantenimientoId;
             VehiculoId = vehiculoId;
-            Servicio = servicio;
+            TallerId = tallerId;
+            ArticulosId = articulosId;
             Cantidad = cantidad;
             Precio = precio;
             Importe = importe;
         }
 
-        public RegistrodeMantenimientoDetalle( int mantenimientoId, int vehiculoId, string servicio, int cantidad, int precio, int importe)
+     
+        public RegistrodeMantenimientoDetalle(int articulosId, int cantidad, int precio, int importe)
         {
-           
-            MantenimientoId = mantenimientoId;
-            VehiculoId = vehiculoId;
-            Servicio = servicio;
+            ArticulosId = articulosId;
             Cantidad = cantidad;
             Precio = precio;
             Importe = importe;
         }
-
-
     }
 }
