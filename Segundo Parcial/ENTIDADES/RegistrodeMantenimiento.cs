@@ -21,9 +21,9 @@ namespace Segundo_Parcial.ENTIDADES
 
     }
 
-    public void AgregarDetalle(int id, int mantenimientoId, int vehiculoId, int tallerId, int articulosId, int cantidad, int precio, int importe)
+    public void AgregarDetalle(int articulosId,string descripcion, int cantidad, int precio, int importe)
     {
-        this.Detalle.Add(new RegistrodeMantenimientoDetalle(id, mantenimientoId,vehiculoId,tallerId, articulosId,cantidad,precio,importe));
+        this.Detalle.Add(new RegistrodeMantenimientoDetalle(articulosId,descripcion,cantidad,precio,importe));
     }
 }
 }

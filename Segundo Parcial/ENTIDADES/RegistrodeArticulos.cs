@@ -26,5 +26,7 @@ namespace Segundo_Parcial.ENTIDADES
             this.precio = 0;
             Inventario = 0;
         }
+
+       
     }
 }

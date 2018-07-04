@@ -21,5 +21,10 @@ namespace Segundo_Parcial.ENTIDADES
             Articulos = string.Empty;
             Cantidad = 0;
         }
+
+        public override string ToString()
+        {
+            return this.Articulos;
+        }
     }
 }

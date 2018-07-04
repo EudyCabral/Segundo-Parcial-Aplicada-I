@@ -113,5 +113,17 @@ namespace Segundo_Parcial.BLL
             catch (Exception) { throw; }
             return ENTRADA;
         }
+
+        public static string RetornarDescripcion(string nombre)
+        {
+            string descripcion = string.Empty;
+            var lista = GetList(x => x.Articulos.Equals(nombre));
+            foreach (var item in lista)
+            {
+                descripcion = item.Articulos;
+            }
+
+            return descripcion;
+        }
     }
 }
