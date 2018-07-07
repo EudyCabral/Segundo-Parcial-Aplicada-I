@@ -31,6 +31,9 @@ namespace Segundo_Parcial.BLL
 
             return paso;
         }
+
+
+
         public static bool Eliminar(int id)
         {
 
@@ -59,6 +62,8 @@ namespace Segundo_Parcial.BLL
             return paso;
         }
 
+
+
         public static bool Editar(RegistrodeArticulos registrodeArticulos)
         {
 
@@ -80,6 +85,8 @@ namespace Segundo_Parcial.BLL
 
             return paso;
         }
+
+
 
         public static RegistrodeArticulos Buscar(int id)
         {
@@ -114,6 +121,7 @@ namespace Segundo_Parcial.BLL
             return registro;
         }
 
+
         public static decimal CalcularCosto(decimal Ganancia,decimal precio)
         {
             
@@ -144,6 +152,18 @@ namespace Segundo_Parcial.BLL
        
         }
 
-        
+        public static string RetornarDescripcion(string nombre)
+        {
+            string descripcion = string.Empty;
+            var lista = GetList(x => x.Descripcion.Equals(nombre));
+            foreach (var item in lista)
+            {
+                descripcion = item.Descripcion;
+            }
+
+            return descripcion;
+        }
+
+
     }
 }

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Windows.Forms;
 
@@ -16,11 +17,16 @@ namespace Segundo_Parcial.UI.Registro
         decimal itbis = 0;
         decimal importe = 0;
         decimal Total = 0;
+        decimal subtotal = 0;
+
         public RegistroDeMantenimiento()
         {
             InitializeComponent();
             LlenarComboBox();
         }
+
+
+
         private int ToInt(object valor)
         {
             int retorno = 0;
@@ -34,12 +40,29 @@ namespace Segundo_Parcial.UI.Registro
             fechaDateTimePicker.Value = DateTime.Now;
             cantidadNumericUpDown.Value = 0;
             TotaltextBox.Clear();
-            precioTextBox.Clear();
+
             importeTextBox.Clear();
-            subtotaltextBox.Clear();
-            TotaltextBox.Clear();
+            subtotaltextBox.Text = 0.ToString();
+            TotaltextBox.Text = 0.ToString();
+            ItbistextBox.Text = 0.ToString();
             DetalledataGridView.DataSource = null;
+
+            itbis = 0;
+             importe = 0;
+             Total = 0;
+            subtotal = 0;
+
             HayErrores.Clear();
+        }
+
+        public void NoColumnas()
+        {
+            DetalledataGridView.Columns["MantenimientoId"].Visible = false;
+            DetalledataGridView.Columns["Id"].Visible = false;
+            DetalledataGridView.Columns["MantenimientoId"].Visible = false;
+            DetalledataGridView.Columns["TallerId"].Visible = false;
+            DetalledataGridView.Columns["ArticulosId"].Visible = false;
+            DetalledataGridView.Columns["RegistrodeArticulos"].Visible = false;
         }
 
         private RegistrodeMantenimiento LlenaClase()
@@ -47,8 +70,12 @@ namespace Segundo_Parcial.UI.Registro
             RegistrodeMantenimiento registrodeMantenimiento = new RegistrodeMantenimiento();
 
             registrodeMantenimiento.MantenimientoId = Convert.ToInt32(mantenimientoIdNumericUpDown.Value);
+            registrodeMantenimiento.VehiculoId = Convert.ToInt32(vehiculoComboBox.SelectedValue);
             registrodeMantenimiento.Fecha = fechaDateTimePicker.Value;
-           
+            registrodeMantenimiento.Subtotal = Convert.ToDecimal(subtotaltextBox.Text);
+            registrodeMantenimiento.itbis = Convert.ToDecimal(ItbistextBox.Text);
+            registrodeMantenimiento.Total = Convert.ToDecimal(TotaltextBox.Text);
+
 
 
             //Agregar cada linea del Grid al detalle
@@ -56,10 +83,11 @@ namespace Segundo_Parcial.UI.Registro
             {
 
                 registrodeMantenimiento.AgregarDetalle
-                    (
-                     
+                    (ToInt(item.Cells["id"].Value),
+                     registrodeMantenimiento.MantenimientoId,
+                       ToInt(item.Cells["tallerId"].Value),
                      ToInt(item.Cells["articulosId"].Value),
-                      Convert.ToString(item.Cells["descripcion"].Value),
+                      Convert.ToString(item.Cells["articulo"].Value),
                        ToInt(item.Cells["cantidad"].Value),
                     ToInt(item.Cells["precio"].Value),
                     ToInt(item.Cells["importe"].Value)
@@ -70,6 +98,35 @@ namespace Segundo_Parcial.UI.Registro
             }
             return registrodeMantenimiento;
         }
+
+
+        private void LlenarCampos(RegistrodeMantenimiento registrodeMantenimiento)
+        {
+            Limpiar();
+            mantenimientoIdNumericUpDown.Value = registrodeMantenimiento.MantenimientoId;
+            fechaDateTimePicker.Value = registrodeMantenimiento.Fecha;
+            subtotaltextBox.Text= registrodeMantenimiento.Subtotal.ToString();
+            ItbistextBox.Text = registrodeMantenimiento.itbis.ToString();
+            TotaltextBox.Text = registrodeMantenimiento.Total.ToString();
+
+                foreach (var item in registrodeMantenimiento.Detalle)
+                {
+                    subtotal += item.Importe;
+           
+                }
+                subtotaltextBox.Text = subtotal.ToString();
+                
+          
+            //Cargar el detalle al Grid
+            DetalledataGridView.DataSource = registrodeMantenimiento.Detalle;
+        
+            NoColumnas();
+
+
+
+
+        }
+
         private void LlenarComboBox()
         {
             Repositorio<Vehiculos> vehiculos= new Repositorio<Vehiculos>(new Contexto());
@@ -82,10 +139,10 @@ namespace Segundo_Parcial.UI.Registro
             tallerComboBox.ValueMember = "TallerId";
             tallerComboBox.DisplayMember = "Nombre";
 
-            Repositorio<RegistroEntradaDeArticulos> Entrada = new Repositorio<RegistroEntradaDeArticulos>(new Contexto());
+            Repositorio<RegistrodeArticulos> Entrada = new Repositorio<RegistrodeArticulos>(new Contexto());
             articulosComboBox.DataSource = Entrada.GetList(c => true);
-            articulosComboBox.ValueMember = "EntradaId";
-            articulosComboBox.DisplayMember = "Articulos";
+            articulosComboBox.ValueMember = "ArticulosId";
+            articulosComboBox.DisplayMember = "Descripcion";
         }
         private void RegistroDeMantenimiento_Load(object sender, EventArgs e)
         {
@@ -111,6 +168,7 @@ namespace Segundo_Parcial.UI.Registro
         {
             List<RegistrodeMantenimientoDetalle> detalle = new List<RegistrodeMantenimientoDetalle>();
             RegistrodeMantenimiento registrodeMantenimiento = new RegistrodeMantenimiento();
+           
 
             if (DetalledataGridView.DataSource != null)
             {
@@ -118,46 +176,73 @@ namespace Segundo_Parcial.UI.Registro
             }
 
             //Agregar un nuevo detalle con los datos introducidos.
-
-            if (string.IsNullOrEmpty(importeTextBox.Text))
+            
+            foreach (var item in BLL.RegistrodeArticulosBLL.GetList(x => x.Inventario < cantidadNumericUpDown.Value))
             {
-                MessageBox.Show("Importe esta vacio , Llene cantidad", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                MessageBox.Show("No hay esa Existencia para Vender ", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                registrodeMantenimiento.Detalle.Add(
-                    new RegistrodeMantenimientoDetalle(id : 0,
-                    mantenimientoId: (int)Convert.ToInt32(mantenimientoIdNumericUpDown.Value),
-                    vehiculoId: (int)vehiculoComboBox.SelectedValue,
-                    tallerId: (int) tallerComboBox.SelectedValue,
-                       articulosId: (int)articulosComboBox.SelectedValue,
-                       entradaId:(int)articulosComboBox.SelectedValue,
-                            articulo: (string)BLL.RegistroEntradaDeArticulosBLL.RetornarDescripcion(articulosComboBox.Text),
-                        cantidad: (int)Convert.ToInt32(cantidadNumericUpDown.Value),
-                        precio: (int)Convert.ToInt32(precioTextBox.Text),
-                        importe: (int)Convert.ToInt32(importeTextBox.Text)
 
-                    ));
            
+            
+                if (string.IsNullOrEmpty(importeTextBox.Text))
+                {
+                    MessageBox.Show("Importe esta vacio , Llene cantidad", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    registrodeMantenimiento.Detalle.Add(
+                        new RegistrodeMantenimientoDetalle(id: 0,
+                        mantenimientoId: (int)Convert.ToInt32(mantenimientoIdNumericUpDown.Value),
+                        tallerId: (int)tallerComboBox.SelectedValue,
+                           articulosId: (int)articulosComboBox.SelectedValue,
+                                articulo: (string)BLL.RegistrodeArticulosBLL.RetornarDescripcion(articulosComboBox.Text),
+                            cantidad: (int)Convert.ToInt32(cantidadNumericUpDown.Value),
+                            precio: (int)Convert.ToInt32(precioTextBox.Text),
+                            importe: (int)Convert.ToInt32(importeTextBox.Text)
+
+                        ));
 
 
-                //Cargar el detalle al Grid
-                DetalledataGridView.DataSource = null;
-                DetalledataGridView.DataSource = registrodeMantenimiento.Detalle;
 
-            }
+
+                    //Cargar el detalle al Grid
+                    DetalledataGridView.DataSource = null;
+                    DetalledataGridView.DataSource = registrodeMantenimiento.Detalle;
+
+                    NoColumnas();
+
+
+                }
+
+
                 importe += BLL.RegistrodeMantenimientoBLL.CalcularImporte(Convert.ToDecimal(precioTextBox.Text), Convert.ToInt32(cantidadNumericUpDown.Value));
 
+                if (mantenimientoIdNumericUpDown.Value != 0)
+                {
+
+                    subtotal += importe;
+                    subtotaltextBox.Text = subtotal.ToString();
+                }
+                else
+                {
+
+                    subtotal = importe;
+                    subtotaltextBox.Text = subtotal.ToString();
+                }
+
+                itbis = BLL.RegistrodeMantenimientoBLL.CalcularItbis(Convert.ToDecimal(subtotaltextBox.Text));
+
+                ItbistextBox.Text = itbis.ToString();
+
+                Total = BLL.RegistrodeMantenimientoBLL.Total(Convert.ToDecimal(subtotaltextBox.Text), Convert.ToDecimal(ItbistextBox.Text));
+
+                TotaltextBox.Text = Total.ToString();
 
 
-            itbis = BLL.RegistrodeMantenimientoBLL.CalcularImporte(Convert.ToDecimal(precioTextBox.Text), Convert.ToInt32(cantidadNumericUpDown.Value)) * Convert.ToDecimal(0.18);
+            
 
-            subtotaltextBox.Text = importe.ToString();
-
-            ItbistextBox.Text = itbis.ToString();
-
-            Total = importe + itbis;
-            TotaltextBox.Text = Total.ToString();
         }
 
         private void cantidadNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -183,44 +268,22 @@ namespace Segundo_Parcial.UI.Registro
 
         private void Buscarbutton_Click(object sender, EventArgs e)
         {
+            int id = Convert.ToInt32(mantenimientoIdNumericUpDown.Value);
+            RegistrodeMantenimiento registrodemantenimiento = BLL.RegistrodeMantenimientoBLL.Buscar(id);
 
+            if (registrodemantenimiento != null)
+            {
+                LlenarCampos(registrodemantenimiento);
+
+            }
+            else
+                MessageBox.Show("No se encontro!", "Fallo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+   
         }
 
-        private bool Validar(int error)
-        {
-            bool paso = false;
-
-
-
-            if (error == 1 && mantenimientoIdNumericUpDown.Value == 0)
-            {
-                HayErrores.SetError(mantenimientoIdNumericUpDown,
-                   "No debes dejar la Cotizacion Id Vacio");
-                paso = true;
-            }
-            if (error == 2 && String.IsNullOrWhiteSpace(TotaltextBox.Text))
-            {
-                HayErrores.SetError(TotaltextBox,
-                   "No debes dejar la Observacion vacia");
-                paso = true;
-            }
-
-            if (error == 2 && DetalledataGridView.RowCount == 0)
-            {
-                HayErrores.SetError(DetalledataGridView,
-                    "Es obligatorio Agregar un Articulo ");
-                paso = true;
-            }
-
-            if (error == 3 && string.IsNullOrEmpty(importeTextBox.Text))
-            {
-                HayErrores.SetError(importeTextBox,
-                    "Es obligatorio Agregar un Articulo ");
-                paso = true;
-            }
-
-            return paso;
-        }
+        
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
@@ -250,47 +313,149 @@ namespace Segundo_Parcial.UI.Registro
         }
 
         private void Guardarbutton_Click(object sender, EventArgs e)
-        {
-            RegistrodeMantenimiento registrodeMantenimiento = LlenaClase();
-            bool Paso = false;
-
+        {          
             if (Validar(2))
             {
-                MessageBox.Show("Favor revisar todos los campos", "Validación",
+                MessageBox.Show("Debe Agregar Algun Producto al Grid", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
-
-
-
-            //Determinar si es Guardar o Modificar
-
-
-            if (mantenimientoIdNumericUpDown.Value == 0)
-            {
-                Paso = BLL.RegistrodeMantenimientoBLL.Guardar(registrodeMantenimiento);
-                HayErrores.Clear();
-            }
-            else
+            }else
             {
 
-                Paso = BLL.RegistrodeMantenimientoBLL.Editar(registrodeMantenimiento);
-                HayErrores.Clear();
+                RegistrodeMantenimiento registrodeMantenimiento = LlenaClase();
+                bool Paso = false;
+
+                //Determinar si es Guardar o Modificar
+
+
+                if (mantenimientoIdNumericUpDown.Value == 0)
+                {
+                    Paso = BLL.RegistrodeMantenimientoBLL.Guardar(registrodeMantenimiento);
+                    HayErrores.Clear();
+                }
+                else
+                {
+
+                    Paso = BLL.RegistrodeMantenimientoBLL.Editar(registrodeMantenimiento);
+                    HayErrores.Clear();
+                }
+
+
+
+                //Informar el resultado
+                if (Paso)
+                {
+                    Limpiar();
+                    MessageBox.Show("Guardado!!", "Exito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    MessageBox.Show("No se pudo guardar!!", "Fallo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
-
-            //Esto es para en caso de que se elimine algun elemento del datagrid y se modifique que elimine el detalle 
-
-            //Informar el resultado
-            if (Paso)
+        private void Removerbutton_Click(object sender, EventArgs e)
+        {
+            if (DetalledataGridView.Rows.Count > 0 && DetalledataGridView.CurrentRow != null)
             {
-                Limpiar();
-                MessageBox.Show("Guardado!!", "Exito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //convertir el grid en la lista
+                List<RegistrodeMantenimientoDetalle> detalle = (List<RegistrodeMantenimientoDetalle>)DetalledataGridView.DataSource;
+
+
+
+               
+
+                //remover la fila
+
+                subtotal -= detalle.ElementAt(DetalledataGridView.CurrentRow.Index).Importe;
+                
+                detalle.RemoveAt(DetalledataGridView.CurrentRow.Index);
+
+
+               
+                
+                subtotaltextBox.Text = subtotal.ToString();
+
+                itbis = BLL.RegistrodeMantenimientoBLL.CalcularItbis(Convert.ToDecimal(subtotaltextBox.Text));
+                ItbistextBox.Text = itbis.ToString();
+
+                Total = BLL.RegistrodeMantenimientoBLL.Total(Convert.ToDecimal(subtotaltextBox.Text),Convert.ToDecimal(ItbistextBox.Text));
+
+                TotaltextBox.Text = Total.ToString(); 
+
+                
+
+                // Cargar el detalle al Grid
+                DetalledataGridView.DataSource = null;
+                DetalledataGridView.DataSource = detalle;
+
+              
+                NoColumnas();
             }
-            else
-                MessageBox.Show("No se pudo guardar!!", "Fallo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        private bool Validar(int error)
+        {
+            bool paso = false;
+
+
+
+            if (error == 1 && mantenimientoIdNumericUpDown.Value == 0)
+            {
+                HayErrores.SetError(mantenimientoIdNumericUpDown,
+                   "No debes dejar la Mantenimien Id Vacio");
+                paso = true;
+            }
+            if (error == 2 && string.IsNullOrWhiteSpace(TotaltextBox.Text))
+            {
+                HayErrores.SetError(TotaltextBox,
+                   "No debes dejar la total vacio");
+                paso = true;
+            }
+            if (error == 2 && string.IsNullOrWhiteSpace(subtotaltextBox.Text))
+            {
+                HayErrores.SetError(subtotaltextBox,
+                   "No debes dejar la subtotal vacio");
+                paso = true;
+            }
+            if (error == 2 && string.IsNullOrWhiteSpace(ItbistextBox.Text))
+            {
+                HayErrores.SetError(ItbistextBox,
+                   "No debes dejar la Itbis vacio");
+                paso = true;
+            }
+
+            if (error == 2 && DetalledataGridView.RowCount == 0)
+            {
+                HayErrores.SetError(DetalledataGridView,
+                    "Es obligatorio Agregar un Articulo ");
+                paso = true;
+            }
+
+            if (error == 3 && string.IsNullOrEmpty(importeTextBox.Text))
+            {
+                HayErrores.SetError(importeTextBox,
+                    "Es obligatorio Agregar un Articulo ");
+                paso = true;
+            }
+
+            return paso;
+        }
+
+        private void subtotaltextBox_TextChanged(object sender, EventArgs e)
+        {
+            
+
+
+
+            
+        }
+
+        private void ItbistextBox_TextChanged(object sender, EventArgs e)
+        {
+         
         }
     }
 }

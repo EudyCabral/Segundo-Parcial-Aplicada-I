@@ -73,6 +73,16 @@ namespace Segundo_Parcial.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Convertible_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Convertible_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Delete_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Delete_32", resourceCulture);
@@ -86,6 +96,26 @@ namespace Segundo_Parcial.Properties {
         internal static System.Drawing.Bitmap icons8_E_Learning_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_E_Learning_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Exit_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Exit_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Maintenance_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Maintenance_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,6 +173,16 @@ namespace Segundo_Parcial.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Question_Mark_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Question_Mark_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Save_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Save_32", resourceCulture);
@@ -166,6 +206,66 @@ namespace Segundo_Parcial.Properties {
         internal static System.Drawing.Bitmap icons8_Search_321 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Search_321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Settings_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Settings_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mantenimiento {
+            get {
+                object obj = ResourceManager.GetObject("Mantenimiento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mantenimiento1 {
+            get {
+                object obj = ResourceManager.GetObject("Mantenimiento1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mantenimiento2 {
+            get {
+                object obj = ResourceManager.GetObject("Mantenimiento2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mantenimiento3 {
+            get {
+                object obj = ResourceManager.GetObject("Mantenimiento3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pieza {
+            get {
+                object obj = ResourceManager.GetObject("pieza", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,5 +1,6 @@
 ﻿using Segundo_Parcial.ENTIDADES;
 using Segundo_Parcial.UI;
+using Segundo_Parcial.UI.Consulta;
 using Segundo_Parcial.UI.Registro;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,35 @@ namespace Segundo_Parcial
         private void registroToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void vehiculosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CVehiculos cVehiculos = new CVehiculos();
+            cVehiculos.Show();
+        }
+
+        private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CArticulos cArticulos = new CArticulos();
+            cArticulos.Show();
+        }
+
+        private void mantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CMantenimiento cMantenimiento = new CMantenimiento();
+            cMantenimiento.Show();
         }
     }
 }

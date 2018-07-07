@@ -32,6 +32,7 @@
             System.Windows.Forms.Label vehiculosIdLabel;
             System.Windows.Forms.Label descripcionLabel;
             System.Windows.Forms.Label mantenimientoLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrodeVehiculos));
             this.Eliminarbutton = new System.Windows.Forms.Button();
             this.Guardarbutton = new System.Windows.Forms.Button();
             this.Nuevobutton = new System.Windows.Forms.Button();
@@ -76,6 +77,8 @@
             // 
             // Eliminarbutton
             // 
+            this.Eliminarbutton.FlatAppearance.BorderSize = 0;
+            this.Eliminarbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Eliminarbutton.Image = global::Segundo_Parcial.Properties.Resources.icons8_Delete_32;
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Eliminarbutton.Location = new System.Drawing.Point(255, 114);
@@ -89,6 +92,8 @@
             // 
             // Guardarbutton
             // 
+            this.Guardarbutton.FlatAppearance.BorderSize = 0;
+            this.Guardarbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Guardarbutton.Image = global::Segundo_Parcial.Properties.Resources.icons8_Save_32;
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Guardarbutton.Location = new System.Drawing.Point(141, 114);
@@ -102,6 +107,8 @@
             // 
             // Nuevobutton
             // 
+            this.Nuevobutton.FlatAppearance.BorderSize = 0;
+            this.Nuevobutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Nuevobutton.Image = global::Segundo_Parcial.Properties.Resources.icons8_New_Window_32;
             this.Nuevobutton.Location = new System.Drawing.Point(27, 114);
             this.Nuevobutton.Name = "Nuevobutton";
@@ -114,6 +121,8 @@
             // 
             // Buscarbutton
             // 
+            this.Buscarbutton.FlatAppearance.BorderSize = 0;
+            this.Buscarbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Buscarbutton.Image = global::Segundo_Parcial.Properties.Resources.icons8_Search_32;
             this.Buscarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Buscarbutton.Location = new System.Drawing.Point(256, 12);
@@ -156,6 +165,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(352, 182);
             this.Controls.Add(mantenimientoLabel);
             this.Controls.Add(this.mantenimientoTextBox);
@@ -167,6 +177,7 @@
             this.Controls.Add(this.Guardarbutton);
             this.Controls.Add(this.Nuevobutton);
             this.Controls.Add(this.Buscarbutton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistrodeVehiculos";
             this.Text = "Registro de Vehiculos";
             this.Load += new System.EventHandler(this.RegistrodeVehiculos_Load);

@@ -31,6 +31,8 @@ namespace Segundo_Parcial.BLL
 
             return paso;
         }
+
+
         public static bool Eliminar(int id)
         {
 
@@ -59,6 +61,8 @@ namespace Segundo_Parcial.BLL
             return paso;
         }
 
+
+
         public static bool Editar(Vehiculos vehiculos)
         {
 
@@ -80,6 +84,8 @@ namespace Segundo_Parcial.BLL
 
             return paso;
         }
+
+
 
         public static Vehiculos Buscar(int id)
         {

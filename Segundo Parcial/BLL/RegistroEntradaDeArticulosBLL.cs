@@ -15,12 +15,20 @@ namespace Segundo_Parcial.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
+            Repositorio<RegistrodeArticulos> registrodeArticulos = new Repositorio<RegistrodeArticulos>(new Contexto());
 
             try
             {
 
                 if (contexto.registroEntradaDeArticulos.Add(registroEntradaDeArticulos) != null)
                 {
+                  
+
+                    foreach (var item in registrodeArticulos.GetList(x => x.Descripcion == registroEntradaDeArticulos.Articulos   ) )
+                    {
+                        contexto.registrodeArticulos.Find(item.ArticulosId).Inventario += registroEntradaDeArticulos.Cantidad;
+                    }
+
                     contexto.SaveChanges();
                     paso = true;
                 }
@@ -31,6 +39,9 @@ namespace Segundo_Parcial.BLL
 
             return paso;
         }
+
+
+
         public static bool Eliminar(int id)
         {
 
@@ -59,6 +70,8 @@ namespace Segundo_Parcial.BLL
             return paso;
         }
 
+
+
         public static bool Editar(RegistroEntradaDeArticulos registroEntradaDeArticulos)
         {
 
@@ -80,6 +93,9 @@ namespace Segundo_Parcial.BLL
 
             return paso;
         }
+
+
+
 
         public static RegistroEntradaDeArticulos Buscar(int id)
         {
@@ -114,16 +130,6 @@ namespace Segundo_Parcial.BLL
             return ENTRADA;
         }
 
-        public static string RetornarDescripcion(string nombre)
-        {
-            string descripcion = string.Empty;
-            var lista = GetList(x => x.Articulos.Equals(nombre));
-            foreach (var item in lista)
-            {
-                descripcion = item.Articulos;
-            }
-
-            return descripcion;
-        }
+       
     }
 }

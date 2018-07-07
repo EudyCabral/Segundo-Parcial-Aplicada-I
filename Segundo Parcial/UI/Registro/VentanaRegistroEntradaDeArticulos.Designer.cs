@@ -90,6 +90,8 @@
             // 
             // Eliminarbutton
             // 
+            this.Eliminarbutton.FlatAppearance.BorderSize = 0;
+            this.Eliminarbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Eliminarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton.Image")));
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Eliminarbutton.Location = new System.Drawing.Point(249, 175);
@@ -103,6 +105,8 @@
             // 
             // Guardarbutton
             // 
+            this.Guardarbutton.FlatAppearance.BorderSize = 0;
+            this.Guardarbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Guardarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Guardarbutton.Image")));
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Guardarbutton.Location = new System.Drawing.Point(135, 175);
@@ -152,6 +156,8 @@
             // 
             // Nuevobutton
             // 
+            this.Nuevobutton.FlatAppearance.BorderSize = 0;
+            this.Nuevobutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Nuevobutton.Image = global::Segundo_Parcial.Properties.Resources.icons8_New_Window_321;
             this.Nuevobutton.Location = new System.Drawing.Point(21, 175);
             this.Nuevobutton.Name = "Nuevobutton";
@@ -164,6 +170,8 @@
             // 
             // Buscarbutton
             // 
+            this.Buscarbutton.FlatAppearance.BorderSize = 0;
+            this.Buscarbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Buscarbutton.Image = global::Segundo_Parcial.Properties.Resources.icons8_Search_321;
             this.Buscarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Buscarbutton.Location = new System.Drawing.Point(233, 20);
@@ -179,6 +187,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(471, 256);
             this.Controls.Add(cantidadLabel);
             this.Controls.Add(this.cantidadNumericUpDown);
@@ -192,6 +201,7 @@
             this.Controls.Add(this.Guardarbutton);
             this.Controls.Add(this.Nuevobutton);
             this.Controls.Add(this.Buscarbutton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VentanaRegistroEntradaDeArticulos";
             this.Text = "Registro Entrada De Articulos";
             this.Load += new System.EventHandler(this.VentanaRegistroEntradaDeArticulos_Load);

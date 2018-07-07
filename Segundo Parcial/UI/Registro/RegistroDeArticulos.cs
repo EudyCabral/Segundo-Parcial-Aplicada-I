@@ -162,10 +162,7 @@ namespace Segundo_Parcial.UI.Registro
                 GeneralerrorProvider.Clear();
             }
 
-            foreach (var item in BLL.RegistroEntradaDeArticulosBLL.GetList(x => x.Articulos == descripcionTextBox.Text))
-            {
-                inventarioTextBox.Text = item.Cantidad.ToString();
-            }
+     
         }
 
         
@@ -275,6 +272,11 @@ namespace Segundo_Parcial.UI.Registro
         {
 
             
+        }
+
+        private void descripcionTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

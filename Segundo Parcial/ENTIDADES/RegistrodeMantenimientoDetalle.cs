@@ -13,19 +13,15 @@ namespace Segundo_Parcial.ENTIDADES
 
         public int Id { get; set; }
         public int MantenimientoId { get; set; }
-        public int VehiculoId { get; set; }
         public int TallerId { get; set; }
-        public int ArticulosId { get; set; }
-        public int EntradaId { get; set; }
-
+        public int ArticulosId { get; set; } 
         public string Articulo { get; set; }
         public int Cantidad { get; set; }
         public int Precio { get; set; }
         public int Importe { get; set; }
         
-
-        [ForeignKey("EntradaId")]
-        public virtual RegistroEntradaDeArticulos RegistroEntradaDeArticulos { get; set; }
+        [ForeignKey("ArticulosId")]
+        public virtual RegistrodeArticulos RegistrodeArticulos { get; set; }
 
         public RegistrodeMantenimientoDetalle()
         {
@@ -33,14 +29,14 @@ namespace Segundo_Parcial.ENTIDADES
             MantenimientoId = 0;
         }
 
-        public RegistrodeMantenimientoDetalle(int id, int mantenimientoId, int vehiculoId, int tallerId, int articulosId, int entradaId,string articulo, int cantidad, int precio, int importe) 
+        public RegistrodeMantenimientoDetalle(int id, int mantenimientoId , int tallerId, int articulosId,string articulo, int cantidad, int precio, int importe) 
         {
             Id = id;
             MantenimientoId = mantenimientoId;
-            VehiculoId = vehiculoId;
+         
             TallerId = tallerId;
             ArticulosId = articulosId;
-            EntradaId = entradaId;
+       
             Articulo = articulo;
             Cantidad = cantidad;
             Precio = precio;
@@ -49,8 +45,10 @@ namespace Segundo_Parcial.ENTIDADES
         
       
 
-        public RegistrodeMantenimientoDetalle(int articulosId,string articulo, int cantidad, int precio, int importe)
+        public RegistrodeMantenimientoDetalle( int mantenimientoId, int articulosId,string articulo, int cantidad, int precio, int importe)
         {
+           
+            MantenimientoId = mantenimientoId;
             ArticulosId = articulosId;
             Articulo = articulo;
             Cantidad = cantidad;

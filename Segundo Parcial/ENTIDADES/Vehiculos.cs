@@ -11,7 +11,7 @@ namespace Segundo_Parcial.ENTIDADES
         [Key]
         public int VehiculosId { get; set; }
         public string Descripcion { get; set; }
-        public int Mantenimiento { get; set; }
+        public decimal Mantenimiento { get; set; }
 
         public Vehiculos()
         {

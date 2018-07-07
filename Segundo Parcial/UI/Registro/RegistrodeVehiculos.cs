@@ -56,7 +56,7 @@ namespace Segundo_Parcial.UI.Registro
             Vehiculos vehiculos = new Vehiculos();
             vehiculos.VehiculosId = Convert.ToInt32(vehiculosIdNumericUpDown.Value);
             vehiculos.Descripcion = descripcionTextBox.Text;
-            vehiculos.Mantenimiento = Convert.ToInt32(mantenimientoTextBox.Text);
+            vehiculos.Mantenimiento = Convert.ToDecimal(mantenimientoTextBox.Text);
             
 
             return vehiculos;

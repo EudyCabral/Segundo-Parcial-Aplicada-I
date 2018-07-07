@@ -63,54 +63,61 @@
             // articulosIdLabel
             // 
             articulosIdLabel.AutoSize = true;
-            articulosIdLabel.Location = new System.Drawing.Point(25, 14);
+            articulosIdLabel.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            articulosIdLabel.Location = new System.Drawing.Point(17, 14);
             articulosIdLabel.Name = "articulosIdLabel";
-            articulosIdLabel.Size = new System.Drawing.Size(62, 13);
+            articulosIdLabel.Size = new System.Drawing.Size(74, 15);
             articulosIdLabel.TabIndex = 1;
             articulosIdLabel.Text = "Articulos Id:";
             // 
             // descripcionLabel
             // 
             descripcionLabel.AutoSize = true;
-            descripcionLabel.Location = new System.Drawing.Point(25, 76);
+            descripcionLabel.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            descripcionLabel.Location = new System.Drawing.Point(17, 76);
             descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(66, 13);
+            descripcionLabel.Size = new System.Drawing.Size(71, 15);
             descripcionLabel.TabIndex = 3;
             descripcionLabel.Text = "Descripcion:";
             // 
             // costoLabel
             // 
             costoLabel.AutoSize = true;
-            costoLabel.Location = new System.Drawing.Point(25, 144);
+            costoLabel.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            costoLabel.Location = new System.Drawing.Point(17, 144);
             costoLabel.Name = "costoLabel";
-            costoLabel.Size = new System.Drawing.Size(36, 13);
+            costoLabel.Size = new System.Drawing.Size(38, 15);
             costoLabel.TabIndex = 5;
-            costoLabel.Text = "costo:";
+            costoLabel.Text = "Costo:";
             // 
             // gananciaLabel
             // 
             gananciaLabel.AutoSize = true;
+            gananciaLabel.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             gananciaLabel.Location = new System.Drawing.Point(242, 143);
             gananciaLabel.Name = "gananciaLabel";
-            gananciaLabel.Size = new System.Drawing.Size(67, 13);
+            gananciaLabel.Size = new System.Drawing.Size(70, 15);
             gananciaLabel.TabIndex = 7;
             gananciaLabel.Text = "Ganancia %:";
             // 
             // precioLabel
             // 
             precioLabel.AutoSize = true;
-            precioLabel.Location = new System.Drawing.Point(25, 203);
+            precioLabel.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            precioLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            precioLabel.Location = new System.Drawing.Point(17, 203);
             precioLabel.Name = "precioLabel";
-            precioLabel.Size = new System.Drawing.Size(39, 13);
+            precioLabel.Size = new System.Drawing.Size(43, 15);
             precioLabel.TabIndex = 9;
-            precioLabel.Text = "precio:";
+            precioLabel.Text = "Precio:";
             // 
             // inventarioLabel
             // 
             inventarioLabel.AutoSize = true;
+            inventarioLabel.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             inventarioLabel.Location = new System.Drawing.Point(241, 206);
             inventarioLabel.Name = "inventarioLabel";
-            inventarioLabel.Size = new System.Drawing.Size(57, 13);
+            inventarioLabel.Size = new System.Drawing.Size(65, 15);
             inventarioLabel.TabIndex = 11;
             inventarioLabel.Text = "Inventario:";
             // 
@@ -128,6 +135,7 @@
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.Size = new System.Drawing.Size(112, 20);
             this.descripcionTextBox.TabIndex = 4;
+            this.descripcionTextBox.TextChanged += new System.EventHandler(this.descripcionTextBox_TextChanged);
             // 
             // costoNumericUpDown
             // 
@@ -144,7 +152,7 @@
             // 
             // gananciaNumericUpDown
             // 
-            this.gananciaNumericUpDown.Location = new System.Drawing.Point(311, 140);
+            this.gananciaNumericUpDown.Location = new System.Drawing.Point(318, 140);
             this.gananciaNumericUpDown.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -170,7 +178,7 @@
             // 
             // inventarioTextBox
             // 
-            this.inventarioTextBox.Location = new System.Drawing.Point(304, 203);
+            this.inventarioTextBox.Location = new System.Drawing.Point(311, 203);
             this.inventarioTextBox.Name = "inventarioTextBox";
             this.inventarioTextBox.ReadOnly = true;
             this.inventarioTextBox.Size = new System.Drawing.Size(120, 20);
@@ -235,6 +243,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackgroundImage = global::Segundo_Parcial.Properties.Resources.pieza;
             this.ClientSize = new System.Drawing.Size(453, 325);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);
@@ -252,6 +262,7 @@
             this.Controls.Add(this.descripcionTextBox);
             this.Controls.Add(articulosIdLabel);
             this.Controls.Add(this.articulosIdNumericUpDown);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VentanaRegistroDeArticulos";
             this.Text = "Registro De Articulos";
             this.Load += new System.EventHandler(this.VentanaRegistroDeArticulos_Load);

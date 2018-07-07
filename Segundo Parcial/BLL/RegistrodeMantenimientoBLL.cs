@@ -16,6 +16,8 @@ namespace Segundo_Parcial.BLL
             bool paso = false;
             Contexto contexto = new Contexto();
 
+       
+            Vehiculos vehiculos = new Vehiculos();
             try
             {
                 if (contexto.registrodeMantenimientos.Add(registrodeMantenimiento) != null)
@@ -23,9 +25,12 @@ namespace Segundo_Parcial.BLL
 
                     foreach (var item in registrodeMantenimiento.Detalle)
                     {
-                        contexto.registroEntradaDeArticulos.Find(item.EntradaId).Cantidad -= item.Cantidad;
+                        contexto.registrodeArticulos.Find(item.ArticulosId).Inventario -= item.Cantidad;
                     }
+                   
 
+                        contexto.vehiculos.Find(registrodeMantenimiento.VehiculoId).Mantenimiento += registrodeMantenimiento.Total;
+                
                     contexto.SaveChanges();
                     paso = true;
                 }
@@ -51,8 +56,8 @@ namespace Segundo_Parcial.BLL
                 {
                     foreach (var item in registrodeMantenimiento.Detalle)
                     {
-                        var ENTRADA = contexto.registroEntradaDeArticulos.Find(item.EntradaId);
-                        ENTRADA.Cantidad += item.Cantidad;
+                        contexto.registrodeArticulos.Find(item.ArticulosId).Inventario += item.Cantidad;
+                   
                     }
 
                     registrodeMantenimiento.Detalle.Count();
@@ -82,7 +87,7 @@ namespace Segundo_Parcial.BLL
         {
             RegistrodeMantenimiento registrodeMantenimiento = new RegistrodeMantenimiento();
             Contexto contexto = new Contexto();
-
+            
             try
             {
                 registrodeMantenimiento = contexto.registrodeMantenimientos.Find(id);
@@ -93,7 +98,7 @@ namespace Segundo_Parcial.BLL
                     foreach (var item in registrodeMantenimiento.Detalle)
                     {
 
-                        string s = item.RegistroEntradaDeArticulos.Articulos;
+                      string s = item.RegistrodeArticulos.Descripcion;
                     }
 
                 }
@@ -102,6 +107,7 @@ namespace Segundo_Parcial.BLL
             catch (Exception) { throw; }
             return registrodeMantenimiento;
         }
+
 
         public static bool Editar(RegistrodeMantenimiento registrodeMantenimiento)
         {
@@ -119,27 +125,28 @@ namespace Segundo_Parcial.BLL
                     foreach (var item in Mantenimiento.Detalle) 
                     {
                        
-                        contexto.registroEntradaDeArticulos.Find(item.EntradaId).Cantidad -= item.Cantidad;
+                        contexto.registrodeArticulos.Find(item.ArticulosId).Inventario += item.Cantidad;
 
 
                        
                         if (!registrodeMantenimiento.Detalle.ToList().Exists(v => v.Id == item.Id))
                         {
-                            contexto.registroEntradaDeArticulos.Find(item.EntradaId).Cantidad += item.Cantidad;
+                            contexto.registroEntradaDeArticulos.Find(item.ArticulosId).Cantidad -= item.Cantidad;
 
-                            item.RegistroEntradaDeArticulos= null; 
+                            item.RegistrodeArticulos= null; 
                             contexto.Entry(item).State = EntityState.Deleted;
                         }
 
 
-
+                       
 
                     }
 
 
                     foreach (var item in registrodeMantenimiento.Detalle)
                     {
-                        
+                        contexto.registrodeArticulos.Find(item.ArticulosId).Inventario -= item.Cantidad;
+
                         var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
                         contexto.Entry(item).State = estado;
                     }
@@ -182,7 +189,16 @@ namespace Segundo_Parcial.BLL
             return Convert.ToDecimal(precio) * Convert.ToInt32(cantidad);
         }
 
-        
+        public static decimal CalcularItbis(decimal subtotal)
+        {
+            return Convert.ToDecimal(subtotal) * Convert.ToDecimal(0.18);
+        }
+
+        public static decimal Total(decimal subtotal, decimal itbis)
+        {
+            return Convert.ToDecimal(subtotal) + Convert.ToDecimal(itbis);
+        }
+
 
     }
 }

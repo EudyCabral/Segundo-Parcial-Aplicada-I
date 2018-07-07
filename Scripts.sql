@@ -6,7 +6,7 @@ create table Vehiculos
 (
     VehiculosId int primary key identity(1,1),
 	Descripcion varchar(40),
-	Mantenimiento int
+	Mantenimiento money
 );
 go
 create table Talleres
@@ -19,28 +19,52 @@ create table Talleres
 go
 
 go
+create table RegistrodeMantenimientoes
+(
+			MantenimientoId int primary key identity(1,1),
+			VehiculoId int,
+            Fecha date,
+			Subtotal money,
+			itbis money,
+			Total money
+);
+go
+
+go
+create table RegistrodeMantenimientoDetalles
+(
+			Id int primary key identity(1,1),
+			MantenimientoId int,
+            TallerId int,
+            ArticulosId int,
+            Articulo varchar(40),
+            Cantidad int,
+            Precio int,
+            Importe int
+      
+);
+go
+
+go
 create table RegistroEntradaDeArticulos
 (
 			EntradaId int primary key identity(1,1),
             Fecha date,
-            Articulos varchar(40),
+            Articulos Varchar(40),          
             Cantidad int
+           
+      
 );
 go
 
+
 select * from RegistrodeArticulos
-select * from Vehiculos
 select * from RegistroEntradaDeArticulos
 select * from Talleres
+select * from Vehiculos
+select* from RegistrodeMantenimientoDetalles
+select* from RegistrodeMantenimientoes
 
-use SegundoParcialDbs
-go
-INSERT INTO Vehiculos(Descripcion,Mantenimiento)
-VALUES ('Toyota Corolla 2005 LE',0);
-
-go
-INSERT INTO Vehiculos(Descripcion,Mantenimiento)
-VALUES ('Honda CRV 2015 Touring',0);
 
 
 
