@@ -60,8 +60,13 @@ namespace Segundo_Parcial.BLL
                    
                     }
 
+                    contexto.vehiculos.Find(registrodeMantenimiento.VehiculoId).Mantenimiento -= registrodeMantenimiento.Total;
+
                     registrodeMantenimiento.Detalle.Count();
                     contexto.registrodeMantenimientos.Remove(registrodeMantenimiento);
+
+
+                  
                 }
 
 
@@ -128,7 +133,6 @@ namespace Segundo_Parcial.BLL
                         contexto.registrodeArticulos.Find(item.ArticulosId).Inventario += item.Cantidad;
 
 
-                       
                         if (!registrodeMantenimiento.Detalle.ToList().Exists(v => v.Id == item.Id))
                         {
                             contexto.registroEntradaDeArticulos.Find(item.ArticulosId).Cantidad -= item.Cantidad;
@@ -145,7 +149,9 @@ namespace Segundo_Parcial.BLL
 
                     foreach (var item in registrodeMantenimiento.Detalle)
                     {
-                        contexto.registrodeArticulos.Find(item.ArticulosId).Inventario -= item.Cantidad;
+                        contexto.registrodeArticulos.Find(item.ArticulosId).Inventario += item.Cantidad;
+
+
 
                         var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
                         contexto.Entry(item).State = estado;
