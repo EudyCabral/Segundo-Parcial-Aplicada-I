@@ -18,6 +18,7 @@ namespace Segundo_Parcial.UI.Registro
         decimal importe = 0;
         decimal Total = 0;
         decimal subtotal = 0;
+        int inventario = 0;
 
         public RegistroDeMantenimiento()
         {
@@ -149,7 +150,7 @@ namespace Segundo_Parcial.UI.Registro
             
 
                 DateTime fecha = Convert.ToDateTime(fechaproximaDateTimePicker.Text);
-                fecha = fecha.AddDays(90);
+                fecha = fecha.AddMonths(3);
 
                 fechaproximaDateTimePicker.Text = fecha.ToString();
         
@@ -167,6 +168,7 @@ namespace Segundo_Parcial.UI.Registro
         private void Agregarbutton_Click(object sender, EventArgs e)
         {
             List<RegistrodeMantenimientoDetalle> detalle = new List<RegistrodeMantenimientoDetalle>();
+            List<RegistrodeMantenimientoDetalle> Detalle = (List<RegistrodeMantenimientoDetalle>)DetalledataGridView.DataSource;
             RegistrodeMantenimiento registrodeMantenimiento = new RegistrodeMantenimiento();
            
 
@@ -204,20 +206,23 @@ namespace Segundo_Parcial.UI.Registro
 
                         ));
 
+                
 
 
 
-                    //Cargar el detalle al Grid
+                //Cargar el detalle al Grid
                     DetalledataGridView.DataSource = null;
                     DetalledataGridView.DataSource = registrodeMantenimiento.Detalle;
 
-                    NoColumnas();
+               
+                NoColumnas();
 
 
                 }
 
 
-                importe += BLL.RegistrodeMantenimientoBLL.CalcularImporte(Convert.ToDecimal(precioTextBox.Text), Convert.ToInt32(cantidadNumericUpDown.Value));
+
+            importe += BLL.RegistrodeMantenimientoBLL.CalcularImporte(Convert.ToDecimal(precioTextBox.Text), Convert.ToInt32(cantidadNumericUpDown.Value));
 
                 if (mantenimientoIdNumericUpDown.Value != 0)
                 {
@@ -239,8 +244,8 @@ namespace Segundo_Parcial.UI.Registro
                 Total = BLL.RegistrodeMantenimientoBLL.Total(Convert.ToDecimal(subtotaltextBox.Text), Convert.ToDecimal(ItbistextBox.Text));
 
                 TotaltextBox.Text = Total.ToString();
-
-
+                
+    
             
 
         }
@@ -260,7 +265,7 @@ namespace Segundo_Parcial.UI.Registro
 
 
                 DateTime fecha = Convert.ToDateTime(fechaproximaDateTimePicker.Text);
-                fecha = fecha.AddDays(90);
+                fecha = fecha.AddMonths(3);
 
                 fechaproximaDateTimePicker.Text = fecha.ToString();
       
@@ -335,8 +340,12 @@ namespace Segundo_Parcial.UI.Registro
                 }
                 else
                 {
+                    var V = BLL.RegistrodeMantenimientoBLL.Buscar(Convert.ToInt32(mantenimientoIdNumericUpDown.Value));
 
-                    Paso = BLL.RegistrodeMantenimientoBLL.Editar(registrodeMantenimiento);
+                    if (V != null)
+                    {
+                        Paso = BLL.RegistrodeMantenimientoBLL.Editar(registrodeMantenimiento);
+                    }
                     HayErrores.Clear();
                 }
 
@@ -357,6 +366,7 @@ namespace Segundo_Parcial.UI.Registro
 
         private void Removerbutton_Click(object sender, EventArgs e)
         {
+            RegistrodeMantenimientoDetalle mantenimiento = new RegistrodeMantenimientoDetalle();
             if (DetalledataGridView.Rows.Count > 0 && DetalledataGridView.CurrentRow != null)
             {
                 //convertir el grid en la lista
@@ -369,12 +379,14 @@ namespace Segundo_Parcial.UI.Registro
                 //remover la fila
 
                 subtotal -= detalle.ElementAt(DetalledataGridView.CurrentRow.Index).Importe;
-                
+               
+
                 detalle.RemoveAt(DetalledataGridView.CurrentRow.Index);
 
 
-               
-                
+
+        
+
                 subtotaltextBox.Text = subtotal.ToString();
 
                 itbis = BLL.RegistrodeMantenimientoBLL.CalcularItbis(Convert.ToDecimal(subtotaltextBox.Text));

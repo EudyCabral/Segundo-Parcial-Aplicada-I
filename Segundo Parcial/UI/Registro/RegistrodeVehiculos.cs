@@ -39,6 +39,7 @@ namespace Segundo_Parcial.UI.Registro
             }
 
 
+
             return errores;
 
         }
@@ -98,21 +99,31 @@ namespace Segundo_Parcial.UI.Registro
             bool paso = false;
             Vehiculos vehiculos = Llenaclase();
 
-
+           
+       
             if (validar(2))
             {
                 MessageBox.Show("Favor de Llenar las Casillas");
             }
             else
             {
-                if (vehiculosIdNumericUpDown.Value == 0)
+                int id = Convert.ToInt32(vehiculosIdNumericUpDown.Value);
+                if (id == 0)
                 {
                     paso = BLL.VehiculosBLL.Guardar(vehiculos);
                 }
                 else
                 {
-                    paso = BLL.VehiculosBLL.Editar(vehiculos);
+                    var C = BLL.VehiculosBLL.Buscar(id);
+
+                    if (C != null)
+                    {
+                        paso = BLL.VehiculosBLL.Editar(vehiculos);
+                    }
+                 
                 }
+
+               
                 Limpiar();
                 GenaralerrorProvider.Clear();
                 if (paso)

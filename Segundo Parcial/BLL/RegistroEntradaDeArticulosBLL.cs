@@ -15,19 +15,17 @@ namespace Segundo_Parcial.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-            Repositorio<RegistrodeArticulos> registrodeArticulos = new Repositorio<RegistrodeArticulos>(new Contexto());
+
 
             try
             {
 
-                if (contexto.registroEntradaDeArticulos.Add(registroEntradaDeArticulos) != null)
+                    if (contexto.registroEntradaDeArticulos.Add(registroEntradaDeArticulos) != null)
                 {
-                  
 
-                    foreach (var item in registrodeArticulos.GetList(x => x.Descripcion == registroEntradaDeArticulos.Articulos   ) )
-                    {
-                        contexto.registrodeArticulos.Find(item.ArticulosId).Inventario += registroEntradaDeArticulos.Cantidad;
-                    }
+                    RegistrodeArticulos articulo = BLL.RegistrodeArticulosBLL.Buscar(registroEntradaDeArticulos.ArticuloId);
+                    articulo.Inventario += registroEntradaDeArticulos.Cantidad;
+                   BLL.RegistrodeArticulosBLL.Editar(articulo);
 
                     contexto.SaveChanges();
                     paso = true;
@@ -54,8 +52,13 @@ namespace Segundo_Parcial.BLL
 
                 if (registroEntradaDeArticulos != null)
                 {
+                    RegistrodeArticulos articulo = BLL.RegistrodeArticulosBLL.Buscar(registroEntradaDeArticulos.ArticuloId);
+                    articulo.Inventario -= registroEntradaDeArticulos.Cantidad;
+                    BLL.RegistrodeArticulosBLL.Editar(articulo);
+
                     contexto.Entry(registroEntradaDeArticulos).State = EntityState.Deleted;
                 }
+
 
                 if (contexto.SaveChanges() > 0)
                 {
@@ -77,15 +80,32 @@ namespace Segundo_Parcial.BLL
 
             bool paso = false;
             Contexto contexto = new Contexto();
-
             try
             {
+
+                RegistroEntradaDeArticulos EntradaAnterior = BLL.RegistroEntradaDeArticulosBLL.Buscar(registroEntradaDeArticulos.EntradaId);
+
+                //identificar la diferencia ya sea restada o sumada
+                int diferencia;
+
+                diferencia = registroEntradaDeArticulos.Cantidad - EntradaAnterior.Cantidad;
+
+                //aplicar diferencia al inventario
+                RegistrodeArticulos articulo = BLL.RegistrodeArticulosBLL.Buscar(registroEntradaDeArticulos.ArticuloId);
+                articulo.Inventario += diferencia;
+                BLL.RegistrodeArticulosBLL.Editar(articulo);
+
                 contexto.Entry(registroEntradaDeArticulos).State = EntityState.Modified;
+
+       
 
                 if (contexto.SaveChanges() > 0)
                 {
                     paso = true;
                 }
+
+
+
                 contexto.Dispose();
 
             }

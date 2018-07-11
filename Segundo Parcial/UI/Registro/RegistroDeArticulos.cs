@@ -115,8 +115,15 @@ namespace Segundo_Parcial.UI.Registro
                 }
                 else
                 {
-                    paso = BLL.RegistrodeArticulosBLL.Editar(registrodearticulos);
+                    var V = BLL.RegistrodeArticulosBLL.Buscar(Convert.ToInt32(articulosIdNumericUpDown.Value));
+
+                    if (V != null)
+                    {
+                        paso = BLL.RegistrodeArticulosBLL.Editar(registrodearticulos);
+                    }
                 }
+
+
                 Limpiar();
                 GeneralerrorProvider.Clear();
                 if (paso)

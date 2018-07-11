@@ -71,6 +71,8 @@ namespace Segundo_Parcial.BLL
 
             try
             {
+                
+
                 contexto.Entry(vehiculos).State = EntityState.Modified;
 
                 if (contexto.SaveChanges() > 0)

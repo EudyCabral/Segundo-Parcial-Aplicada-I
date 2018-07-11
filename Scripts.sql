@@ -68,5 +68,10 @@ select* from RegistrodeMantenimientoes
 
 
 
-
+truncate table RegistrodeArticulos
+truncate table RegistroEntradaDeArticulos
+truncate table Talleres
+truncate table Vehiculos
+truncate table RegistrodeMantenimientoDetalles
+truncate table RegistrodeMantenimientoes
 

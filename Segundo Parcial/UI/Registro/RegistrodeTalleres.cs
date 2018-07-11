@@ -129,8 +129,16 @@ namespace Segundo_Parcial.UI.Registro
                 }
                 else
                 {
-                    paso = BLL.TalleresBLL.Editar(talleres);
+                    var V = BLL.TalleresBLL.Buscar(Convert.ToInt32(tallerIdNumericUpDown.Value));
+
+                    if (V != null)
+                    {
+                        paso = BLL.TalleresBLL.Editar(talleres);
+                    }
                 }
+
+
+
                 Limpiar();
                 GenaralerrorProvider.Clear();
                 if (paso)

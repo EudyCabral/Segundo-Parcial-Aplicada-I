@@ -64,7 +64,7 @@ namespace Segundo_Parcial.UI
         {
             RegistroEntradaDeArticulos articulos = new RegistroEntradaDeArticulos();
             articulos.EntradaId = Convert.ToInt32(entradaIdNumericUpDown.Value);
-            articulos.Articulos = articulosComboBox.Text;
+            articulos.ArticuloId =(int) articulosComboBox.SelectedValue;
             articulos.Cantidad = Convert.ToInt32(cantidadNumericUpDown.Value);
 
 
@@ -89,7 +89,12 @@ namespace Segundo_Parcial.UI
                 }
                 else
                 {
-                    paso = BLL.RegistroEntradaDeArticulosBLL.Editar(registroEntradaDeArticulos);
+                    var V = BLL.RegistroEntradaDeArticulosBLL.Buscar(Convert.ToInt32(entradaIdNumericUpDown.Value));
+
+                    if (V != null)
+                    {
+                        paso = BLL.RegistroEntradaDeArticulosBLL.Editar(registroEntradaDeArticulos);
+                    }
                 }
                 Limpiar();
                 GenaralerrorProvider.Clear();
@@ -119,7 +124,7 @@ namespace Segundo_Parcial.UI
                 if (registroEntradaDeArticulos != null)
                 {
                     entradaIdNumericUpDown.Value = registroEntradaDeArticulos.EntradaId;
-                    articulosComboBox.Text = registroEntradaDeArticulos.Articulos;
+                    articulosComboBox.SelectedValue = registroEntradaDeArticulos.ArticuloId;
                     cantidadNumericUpDown.Value = registroEntradaDeArticulos.Cantidad;
 
 

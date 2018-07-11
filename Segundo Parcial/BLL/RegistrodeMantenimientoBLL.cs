@@ -118,6 +118,9 @@ namespace Segundo_Parcial.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
+
+
+          
             try
             {
                 var Mantenimiento = BLL.RegistrodeMantenimientoBLL.Buscar(registrodeMantenimiento.MantenimientoId);
@@ -133,29 +136,50 @@ namespace Segundo_Parcial.BLL
                         contexto.registrodeArticulos.Find(item.ArticulosId).Inventario += item.Cantidad;
 
 
+
                         if (!registrodeMantenimiento.Detalle.ToList().Exists(v => v.Id == item.Id))
                         {
-                            contexto.registroEntradaDeArticulos.Find(item.ArticulosId).Cantidad -= item.Cantidad;
+                          //  contexto.registrodeArticulos.Find(item.ArticulosId).Inventario -= item.Cantidad;
 
-                            item.RegistrodeArticulos= null; 
+                            item.RegistrodeArticulos = null;
                             contexto.Entry(item).State = EntityState.Deleted;
                         }
 
 
-                       
 
                     }
 
 
                     foreach (var item in registrodeMantenimiento.Detalle)
                     {
-                        contexto.registrodeArticulos.Find(item.ArticulosId).Inventario += item.Cantidad;
+                        contexto.registrodeArticulos.Find(item.ArticulosId).Inventario -= item.Cantidad;
 
 
 
                         var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
                         contexto.Entry(item).State = estado;
                     }
+
+
+
+          
+
+                RegistrodeMantenimiento EntradaAnterior = BLL.RegistrodeMantenimientoBLL.Buscar(registrodeMantenimiento.MantenimientoId);
+
+
+                    //identificar la diferencia ya sea restada o sumada
+                    decimal diferencia;
+
+                    diferencia = registrodeMantenimiento.Total - EntradaAnterior.Total;
+
+                    //aplicar diferencia al inventario
+                    Vehiculos vehiculos = BLL.VehiculosBLL.Buscar(registrodeMantenimiento.VehiculoId);
+                    vehiculos.Mantenimiento += diferencia;
+                    BLL.VehiculosBLL.Editar(vehiculos);
+
+
+
+
 
                     contexto.Entry(registrodeMantenimiento).State = EntityState.Modified;
                 }

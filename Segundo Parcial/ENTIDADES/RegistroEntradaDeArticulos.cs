@@ -11,7 +11,7 @@ namespace Segundo_Parcial.ENTIDADES
         [Key]
         public int EntradaId { get; set; }
         public DateTime Fecha { get; set; }
-        public string Articulos { get; set; }
+        public int ArticuloId { get; set; }
         public int Cantidad { get; set; }
 
  
@@ -22,15 +22,12 @@ namespace Segundo_Parcial.ENTIDADES
 
             EntradaId = 0;
             Fecha =DateTime.Now;
-            Articulos = string.Empty;
+            ArticuloId = 0;
             Cantidad = 0;
         }
 
     
 
-        public override string ToString()
-        {
-            return this.Articulos;
-        }
+     
     }
 }
