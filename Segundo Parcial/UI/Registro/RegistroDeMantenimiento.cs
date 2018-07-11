@@ -15,10 +15,7 @@ namespace Segundo_Parcial.UI.Registro
     public partial class RegistroDeMantenimiento : Form
     {
         decimal itbis = 0;
-        decimal importe = 0;
         decimal Total = 0;
-        decimal subtotal = 0;
-        int inventario = 0;
 
         public RegistroDeMantenimiento()
         {
@@ -49,9 +46,7 @@ namespace Segundo_Parcial.UI.Registro
             DetalledataGridView.DataSource = null;
 
             itbis = 0;
-             importe = 0;
              Total = 0;
-            subtotal = 0;
 
             HayErrores.Clear();
         }
@@ -65,6 +60,8 @@ namespace Segundo_Parcial.UI.Registro
             DetalledataGridView.Columns["ArticulosId"].Visible = false;
             DetalledataGridView.Columns["RegistrodeArticulos"].Visible = false;
         }
+
+
 
         private RegistrodeMantenimiento LlenaClase()
         {
@@ -101,6 +98,8 @@ namespace Segundo_Parcial.UI.Registro
         }
 
 
+
+
         private void LlenarCampos(RegistrodeMantenimiento registrodeMantenimiento)
         {
             Limpiar();
@@ -110,23 +109,15 @@ namespace Segundo_Parcial.UI.Registro
             ItbistextBox.Text = registrodeMantenimiento.itbis.ToString();
             TotaltextBox.Text = registrodeMantenimiento.Total.ToString();
 
-                foreach (var item in registrodeMantenimiento.Detalle)
-                {
-                    subtotal += item.Importe;
-           
-                }
-                subtotaltextBox.Text = subtotal.ToString();
-                
-          
+    
             //Cargar el detalle al Grid
             DetalledataGridView.DataSource = registrodeMantenimiento.Detalle;
         
             NoColumnas();
 
-
-
-
         }
+
+
 
         private void LlenarComboBox()
         {
@@ -145,16 +136,16 @@ namespace Segundo_Parcial.UI.Registro
             articulosComboBox.ValueMember = "ArticulosId";
             articulosComboBox.DisplayMember = "Descripcion";
         }
+
+
         private void RegistroDeMantenimiento_Load(object sender, EventArgs e)
         {
             
-
                 DateTime fecha = Convert.ToDateTime(fechaproximaDateTimePicker.Text);
                 fecha = fecha.AddMonths(3);
-
-                fechaproximaDateTimePicker.Text = fecha.ToString();
-        
+                fechaproximaDateTimePicker.Text = fecha.ToString();    
         }
+
 
         private void articulosComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -165,20 +156,20 @@ namespace Segundo_Parcial.UI.Registro
             }
         }
 
+
         private void Agregarbutton_Click(object sender, EventArgs e)
         {
             List<RegistrodeMantenimientoDetalle> detalle = new List<RegistrodeMantenimientoDetalle>();
-            List<RegistrodeMantenimientoDetalle> Detalle = (List<RegistrodeMantenimientoDetalle>)DetalledataGridView.DataSource;
-            RegistrodeMantenimiento registrodeMantenimiento = new RegistrodeMantenimiento();
+
            
 
             if (DetalledataGridView.DataSource != null)
             {
-                registrodeMantenimiento.Detalle = (List<RegistrodeMantenimientoDetalle>)DetalledataGridView.DataSource;
+                detalle = (List<RegistrodeMantenimientoDetalle>)DetalledataGridView.DataSource;
             }
 
             //Agregar un nuevo detalle con los datos introducidos.
-            
+
             foreach (var item in BLL.RegistrodeArticulosBLL.GetList(x => x.Inventario < cantidadNumericUpDown.Value))
             {
                 
@@ -194,7 +185,7 @@ namespace Segundo_Parcial.UI.Registro
                 }
                 else
                 {
-                    registrodeMantenimiento.Detalle.Add(
+                    detalle.Add(
                         new RegistrodeMantenimientoDetalle(id: 0,
                         mantenimientoId: (int)Convert.ToInt32(mantenimientoIdNumericUpDown.Value),
                         tallerId: (int)tallerComboBox.SelectedValue,
@@ -206,13 +197,9 @@ namespace Segundo_Parcial.UI.Registro
 
                         ));
 
-                
-
-
-
                 //Cargar el detalle al Grid
                     DetalledataGridView.DataSource = null;
-                    DetalledataGridView.DataSource = registrodeMantenimiento.Detalle;
+                    DetalledataGridView.DataSource = detalle;
 
                
                 NoColumnas();
@@ -220,23 +207,17 @@ namespace Segundo_Parcial.UI.Registro
 
                 }
 
+            decimal subtotal = 0;
 
+            foreach (var item in detalle)
+            {
+                subtotal += item.Importe;
 
-            importe += BLL.RegistrodeMantenimientoBLL.CalcularImporte(Convert.ToDecimal(precioTextBox.Text), Convert.ToInt32(cantidadNumericUpDown.Value));
+            }
 
-                if (mantenimientoIdNumericUpDown.Value != 0)
-                {
-
-                    subtotal += importe;
+                    
                     subtotaltextBox.Text = subtotal.ToString();
-                }
-                else
-                {
-
-                    subtotal = importe;
-                    subtotaltextBox.Text = subtotal.ToString();
-                }
-
+                
                 itbis = BLL.RegistrodeMantenimientoBLL.CalcularItbis(Convert.ToDecimal(subtotaltextBox.Text));
 
                 ItbistextBox.Text = itbis.ToString();
@@ -245,10 +226,9 @@ namespace Segundo_Parcial.UI.Registro
 
                 TotaltextBox.Text = Total.ToString();
                 
-    
-            
-
         }
+
+
 
         private void cantidadNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -257,13 +237,11 @@ namespace Segundo_Parcial.UI.Registro
             
         }
 
+
+
         private void fechaDateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-            
+        {        
                 fechaproximaDateTimePicker.Value = fechaDateTimePicker.Value;
-
-
                 DateTime fecha = Convert.ToDateTime(fechaproximaDateTimePicker.Text);
                 fecha = fecha.AddMonths(3);
 
@@ -284,8 +262,6 @@ namespace Segundo_Parcial.UI.Registro
             else
                 MessageBox.Show("No se encontro!", "Fallo",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-   
         }
 
         
@@ -312,10 +288,14 @@ namespace Segundo_Parcial.UI.Registro
             }
         }
 
+
+
         private void Nuevobutton_Click(object sender, EventArgs e)
         {
             Limpiar();
         }
+
+
 
         private void Guardarbutton_Click(object sender, EventArgs e)
         {          
@@ -364,6 +344,8 @@ namespace Segundo_Parcial.UI.Registro
             }
         }
 
+
+
         private void Removerbutton_Click(object sender, EventArgs e)
         {
             RegistrodeMantenimientoDetalle mantenimiento = new RegistrodeMantenimientoDetalle();
@@ -372,21 +354,17 @@ namespace Segundo_Parcial.UI.Registro
                 //convertir el grid en la lista
                 List<RegistrodeMantenimientoDetalle> detalle = (List<RegistrodeMantenimientoDetalle>)DetalledataGridView.DataSource;
 
-
-
-               
-
-                //remover la fila
-
-                subtotal -= detalle.ElementAt(DetalledataGridView.CurrentRow.Index).Importe;
-               
-
+                //remover la fila             
                 detalle.RemoveAt(DetalledataGridView.CurrentRow.Index);
 
+                decimal subtotal = 0;
 
+                foreach (var item in detalle)
+                {
+                    subtotal -= item.Importe;
+                }
 
-        
-
+                subtotal *= (-1);
                 subtotaltextBox.Text = subtotal.ToString();
 
                 itbis = BLL.RegistrodeMantenimientoBLL.CalcularItbis(Convert.ToDecimal(subtotaltextBox.Text));
@@ -408,6 +386,8 @@ namespace Segundo_Parcial.UI.Registro
 
         }
 
+
+
         private bool Validar(int error)
         {
             bool paso = false;
@@ -417,7 +397,7 @@ namespace Segundo_Parcial.UI.Registro
             if (error == 1 && mantenimientoIdNumericUpDown.Value == 0)
             {
                 HayErrores.SetError(mantenimientoIdNumericUpDown,
-                   "No debes dejar la Mantenimien Id Vacio");
+                   "No debes dejar la Mantenimiento Id Vacio");
                 paso = true;
             }
             if (error == 2 && string.IsNullOrWhiteSpace(TotaltextBox.Text))
@@ -456,18 +436,6 @@ namespace Segundo_Parcial.UI.Registro
             return paso;
         }
 
-        private void subtotaltextBox_TextChanged(object sender, EventArgs e)
-        {
-            
 
-
-
-            
-        }
-
-        private void ItbistextBox_TextChanged(object sender, EventArgs e)
-        {
-         
-        }
     }
 }

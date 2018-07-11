@@ -260,7 +260,6 @@
             this.subtotaltextBox.ReadOnly = true;
             this.subtotaltextBox.Size = new System.Drawing.Size(100, 20);
             this.subtotaltextBox.TabIndex = 62;
-            this.subtotaltextBox.TextChanged += new System.EventHandler(this.subtotaltextBox_TextChanged);
             // 
             // ItbistextBox
             // 
@@ -269,7 +268,6 @@
             this.ItbistextBox.ReadOnly = true;
             this.ItbistextBox.Size = new System.Drawing.Size(100, 20);
             this.ItbistextBox.TabIndex = 64;
-            this.ItbistextBox.TextChanged += new System.EventHandler(this.ItbistextBox_TextChanged);
             // 
             // DetalledataGridView
             // 
