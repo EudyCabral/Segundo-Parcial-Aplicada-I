@@ -12,9 +12,9 @@ namespace Segundo_Parcial.ENTIDADES
 
         public int ArticulosId { get; set; }
         public string Descripcion { get; set; }
-        public int costo { get; set; }
+        public decimal costo { get; set; }
         public int Ganancia { get; set; }
-        public int precio { get; set; }
+        public decimal precio { get; set; }
         public int Inventario { get; set; }
 
         public RegistrodeArticulos()

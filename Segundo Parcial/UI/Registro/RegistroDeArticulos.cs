@@ -29,21 +29,21 @@ namespace Segundo_Parcial.UI.Registro
                 errores = true;
             }
 
-            if (error == 2 &&  precioNumericUpDown.Value == 0)
+            if (error == 2 &&  string.IsNullOrWhiteSpace(precioTextBox.Text))
             {
-                GeneralerrorProvider.SetError(precioNumericUpDown, "Llene precio");
+                GeneralerrorProvider.SetError(precioTextBox, "Llene precio");
                 errores = true;
             }
 
-            if (error == 2 && gananciaNumericUpDown.Value == 0)
+            if (error == 2 && string.IsNullOrWhiteSpace(gananciaTextBox.Text))
             {
-                GeneralerrorProvider.SetError(gananciaNumericUpDown, "Llene Ganancia");
+                GeneralerrorProvider.SetError(gananciaTextBox, "Llene Ganancia");
                 errores = true;
             }
 
-            if (error == 2 && costoNumericUpDown.Value == 0)
+            if (error == 2 && string.IsNullOrWhiteSpace(costoTextBox.Text))
             {
-                GeneralerrorProvider.SetError(costoNumericUpDown, "Llene Costo");
+                GeneralerrorProvider.SetError(costoTextBox, "Llene Costo");
                 errores = true;
             }
 
@@ -72,11 +72,11 @@ namespace Segundo_Parcial.UI.Registro
         private void Limpiar()
         {
             articulosIdNumericUpDown.Value = 0;
-           costoNumericUpDown.Value = 0;
-            precioNumericUpDown.Value = 0;
+           costoTextBox.Clear();
+            precioTextBox.Clear();
             inventarioTextBox.Clear();
             descripcionTextBox.Clear();
-            gananciaNumericUpDown.Value = 0;
+            gananciaTextBox.Clear();
             inventarioTextBox.Text = 0.ToString();
 
 
@@ -90,9 +90,9 @@ namespace Segundo_Parcial.UI.Registro
             inventarioTextBox.Text = 0.ToString();
             registrodearticulos.ArticulosId = Convert.ToInt32(articulosIdNumericUpDown.Value);
             registrodearticulos.Descripcion = descripcionTextBox.Text;
-            registrodearticulos.costo = Convert.ToInt32(costoNumericUpDown.Value);
-            registrodearticulos.Ganancia = Convert.ToInt32(gananciaNumericUpDown.Value);
-            registrodearticulos.precio = Convert.ToInt32(precioNumericUpDown.Value);
+            registrodearticulos.costo = Convert.ToDecimal(costoTextBox.Text);
+            registrodearticulos.Ganancia = Convert.ToInt32(gananciaTextBox.Text);
+            registrodearticulos.precio = Convert.ToDecimal(precioTextBox.Text);
             registrodearticulos.Inventario = Convert.ToInt32(inventarioTextBox.Text);
 
             return registrodearticulos;
@@ -153,9 +153,9 @@ namespace Segundo_Parcial.UI.Registro
                 {
                     articulosIdNumericUpDown.Value = registrodeArticulos.ArticulosId;
                     descripcionTextBox.Text = registrodeArticulos.Descripcion;
-                    costoNumericUpDown.Value = registrodeArticulos.costo;
-                    gananciaNumericUpDown.Value = registrodeArticulos.Ganancia;
-                    precioNumericUpDown.Value = registrodeArticulos.precio;
+                    costoTextBox.Text = registrodeArticulos.costo.ToString();
+                    gananciaTextBox.Text = registrodeArticulos.Ganancia.ToString();
+                    precioTextBox.Text = registrodeArticulos.precio.ToString();
                     inventarioTextBox.Text = registrodeArticulos.Inventario.ToString();
 
 
@@ -204,85 +204,52 @@ namespace Segundo_Parcial.UI.Registro
 
         private void VentanaRegistroDeArticulos_Load(object sender, EventArgs e)
         {
+           
+        }
+    
 
+        private void costoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+            if (precioTextBox.Text != string.Empty && costoTextBox.Text != string.Empty && Convert.ToDecimal(costoTextBox.Text) < Convert.ToDecimal(precioTextBox.Text))
+            {
+                gananciaTextBox.Text = BLL.RegistrodeArticulosBLL.CalcularGanancia(Convert.ToDecimal(costoTextBox.Text), Convert.ToDecimal(precioTextBox.Text)).ToString();
+                return;
+            }
+            
+            if (costoTextBox.Text != string.Empty && gananciaTextBox.Text != string.Empty && precioTextBox.Text == string.Empty)
+            {
+                precioTextBox.Text = BLL.RegistrodeArticulosBLL.CalcularPrecio(Convert.ToDecimal(costoTextBox.Text), Convert.ToDecimal(gananciaTextBox.Text)).ToString();
+                return;
+            }
+
+           
         }
 
-        private void costoNumericUpDown_ValueChanged(object sender, EventArgs e)
+        private void precioTextBox_TextChanged(object sender, EventArgs e)
         {
-            decimal costo = Convert.ToInt32(costoNumericUpDown.Value);
-            decimal precio = Convert.ToInt32(precioNumericUpDown.Value);
-            decimal ganancia = Convert.ToDecimal(gananciaNumericUpDown.Value);
 
-            if (costoNumericUpDown.Value < precioNumericUpDown.Value && gananciaNumericUpDown.Value == 0)
-            {
-                gananciaNumericUpDown.Value = BLL.RegistrodeArticulosBLL.CalcularGanancia(costo,costo);
-            }
-            else
-            
-                if(costoNumericUpDown.Value > 0 && gananciaNumericUpDown.Value > 0 && precioNumericUpDown.Value == 0)
-            {
-
-                precioNumericUpDown.Value = BLL.RegistrodeArticulosBLL.CalcularPrecio(costo,ganancia);
-            }
-            
           
-        }
-
-        private void precioNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            decimal costo = Convert.ToDecimal(costoNumericUpDown.Value);
-            decimal precio = Convert.ToDecimal(precioNumericUpDown.Value);
-            decimal ganancia = Convert.ToDecimal(gananciaNumericUpDown.Value);
-
-            if (precioNumericUpDown.Value > costoNumericUpDown.Value && gananciaNumericUpDown.Value == 0)
-            {  
-                gananciaNumericUpDown.Value = BLL.RegistrodeArticulosBLL.CalcularGanancia(costo, precio);
-
-            }
-            else
-            if(precioNumericUpDown.Value > 0 && gananciaNumericUpDown.Value > 0 && costoNumericUpDown.Value == 0)
+            if (precioTextBox.Text != string.Empty && costoTextBox.Text != string.Empty && Convert.ToDecimal(costoTextBox.Text) < Convert.ToDecimal(precioTextBox.Text))
             {
-
-                costoNumericUpDown.Value = BLL.RegistrodeArticulosBLL.CalcularCosto(ganancia, precio);
+                gananciaTextBox.Text = BLL.RegistrodeArticulosBLL.CalcularGanancia(Convert.ToDecimal(costoTextBox.Text), Convert.ToDecimal(precioTextBox.Text)).ToString();
+                return;
             }
-            
+           
 
-             
 
         }
+
+        private void gananciaTextBox_TextChanged(object sender, EventArgs e)
+        {
+
 
        
-
-        private void gananciaNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            decimal costo = Convert.ToInt32(costoNumericUpDown.Value);
-            decimal precio = Convert.ToInt32(precioNumericUpDown.Value);
-            decimal ganancia = Convert.ToDecimal(gananciaNumericUpDown.Value);
-
-
-            if (costoNumericUpDown.Value > 0 && gananciaNumericUpDown.Value > 0 && precioNumericUpDown.Value == 0)
+            if ( costoTextBox.Text != string.Empty  && gananciaTextBox.Text != string.Empty )
             {
-
-                precioNumericUpDown.Value = BLL.RegistrodeArticulosBLL.CalcularPrecio(costo, ganancia);
+                precioTextBox.Text = BLL.RegistrodeArticulosBLL.CalcularPrecio(Convert.ToDecimal(costoTextBox.Text), Convert.ToDecimal(gananciaTextBox.Text)).ToString();
+                return;
             }
-            else
-            if (precioNumericUpDown.Value > 0 && gananciaNumericUpDown.Value > 0 && costoNumericUpDown.Value == 0)
-            {
-
-                 costoNumericUpDown.Value = BLL.RegistrodeArticulosBLL.CalcularCosto(ganancia, precio);
-            }
-
-        }
-
-       
-        private void articulosIdNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-
-            
-        }
-
-        private void descripcionTextBox_TextChanged(object sender, EventArgs e)
-        {
 
         }
     }

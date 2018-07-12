@@ -137,6 +137,11 @@
             // vehiculosIdNumericUpDown
             // 
             this.vehiculosIdNumericUpDown.Location = new System.Drawing.Point(116, 18);
+            this.vehiculosIdNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.vehiculosIdNumericUpDown.Name = "vehiculosIdNumericUpDown";
             this.vehiculosIdNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.vehiculosIdNumericUpDown.TabIndex = 35;

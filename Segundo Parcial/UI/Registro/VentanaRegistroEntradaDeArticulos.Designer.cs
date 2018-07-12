@@ -121,6 +121,11 @@
             // entradaIdNumericUpDown
             // 
             this.entradaIdNumericUpDown.Location = new System.Drawing.Point(90, 29);
+            this.entradaIdNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.entradaIdNumericUpDown.Name = "entradaIdNumericUpDown";
             this.entradaIdNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.entradaIdNumericUpDown.TabIndex = 43;
@@ -146,6 +151,11 @@
             // cantidadNumericUpDown
             // 
             this.cantidadNumericUpDown.Location = new System.Drawing.Point(90, 128);
+            this.cantidadNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.cantidadNumericUpDown.Name = "cantidadNumericUpDown";
             this.cantidadNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.cantidadNumericUpDown.TabIndex = 46;

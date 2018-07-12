@@ -132,6 +132,11 @@
             // tallerIdNumericUpDown
             // 
             this.tallerIdNumericUpDown.Location = new System.Drawing.Point(64, 14);
+            this.tallerIdNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.tallerIdNumericUpDown.Name = "tallerIdNumericUpDown";
             this.tallerIdNumericUpDown.Size = new System.Drawing.Size(100, 20);
             this.tallerIdNumericUpDown.TabIndex = 41;

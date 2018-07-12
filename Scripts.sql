@@ -50,11 +50,23 @@ create table RegistroEntradaDeArticulos
 (
 			EntradaId int primary key identity(1,1),
             Fecha date,
-            Articulos Varchar(40),          
+            ArticuloId int,          
             Cantidad int
            
       
 );
+go
+
+go
+create table RegistrodeArticulos
+(
+			ArticulosId int primary key identity(1,1),
+            Descripcion varchar(40),
+            costo money,
+            Ganancia int,
+            precio money,
+            Inventario int
+); 
 go
 
 
