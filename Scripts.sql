@@ -39,8 +39,8 @@ create table RegistrodeMantenimientoDetalles
             ArticulosId int,
             Articulo varchar(40),
             Cantidad int,
-            Precio int,
-            Importe int
+            Precio money,
+            Importe money
       
 );
 go
@@ -63,7 +63,7 @@ create table RegistrodeArticulos
 			ArticulosId int primary key identity(1,1),
             Descripcion varchar(40),
             costo money,
-            Ganancia int,
+            Ganancia money,
             precio money,
             Inventario int
 ); 
