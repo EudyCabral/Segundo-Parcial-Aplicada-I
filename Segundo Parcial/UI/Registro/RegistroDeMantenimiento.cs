@@ -210,7 +210,7 @@ namespace Segundo_Parcial.UI.Registro
                     DetalledataGridView.DataSource = null;
                     DetalledataGridView.DataSource = detalle;
 
-               
+               //Oculta las Columnas No deceada
                 NoColumnas();
 
 
