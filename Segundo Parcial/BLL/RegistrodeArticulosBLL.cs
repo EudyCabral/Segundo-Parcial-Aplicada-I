@@ -121,27 +121,12 @@ namespace Segundo_Parcial.BLL
             return registro;
         }
 
-
-        public static decimal CalcularCosto(decimal Ganancia,decimal precio)
-        {
-            
-                Ganancia /= 100;
-
-                return Convert.ToDecimal(precio) * Convert.ToDecimal(Ganancia);
-        
-           
-        }
-
         public static decimal CalcularGanancia(decimal Costo,decimal Precio)
         {
             decimal pg = Precio - Costo;
 
-
-
             return (Convert.ToDecimal(pg) / Convert.ToDecimal(Costo)) * 100;
           
-           
-
         }
 
         public static decimal CalcularPrecio(decimal Costo, decimal Ganancia)

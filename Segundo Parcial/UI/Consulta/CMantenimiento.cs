@@ -211,12 +211,15 @@ namespace Segundo_Parcial.UI.Consulta
 
 
             MantenimientodataGridView.DataSource = BLL.RegistrodeMantenimientoBLL.GetList(filtro);
+
+
+            MantenimientodataGridView.Columns["Detalle"].Visible = false;
+            
+
+
+
             CriteriotextBox.Clear();
             GeneralerrorProvider.Clear();
-
-
-         
-
         }
 
 

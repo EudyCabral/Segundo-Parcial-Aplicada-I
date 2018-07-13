@@ -32,6 +32,15 @@ namespace Segundo_Parcial.UI.Registro
             return retorno;
 
         }
+
+        private decimal ToDecimal(object valor)
+        {
+            decimal retorno = 0;
+            decimal.TryParse(valor.ToString(), out retorno);
+            return retorno;
+
+        }
+
         public void Limpiar()
         {
             mantenimientoIdNumericUpDown.Value = 0;
@@ -87,8 +96,8 @@ namespace Segundo_Parcial.UI.Registro
                      ToInt(item.Cells["articulosId"].Value),
                       Convert.ToString(item.Cells["articulo"].Value),
                        ToInt(item.Cells["cantidad"].Value),
-                    ToInt(item.Cells["precio"].Value),
-                    ToInt(item.Cells["importe"].Value)
+                    ToDecimal(item.Cells["precio"].Value),
+                    ToDecimal(item.Cells["importe"].Value)
                   
 
                   
@@ -192,8 +201,8 @@ namespace Segundo_Parcial.UI.Registro
                            articulosId: (int)articulosComboBox.SelectedValue,
                                 articulo: (string)BLL.RegistrodeArticulosBLL.RetornarDescripcion(articulosComboBox.Text),
                             cantidad: (int)Convert.ToInt32(cantidadNumericUpDown.Value),
-                            precio: (int)Convert.ToInt32(precioTextBox.Text),
-                            importe: (int)Convert.ToInt32(importeTextBox.Text)
+                            precio: (decimal)Convert.ToDecimal(precioTextBox.Text),
+                            importe: (decimal)Convert.ToDecimal(importeTextBox.Text)
 
                         ));
 
@@ -233,7 +242,7 @@ namespace Segundo_Parcial.UI.Registro
         private void cantidadNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
            
-                importeTextBox.Text = BLL.RegistrodeMantenimientoBLL.CalcularImporte(Convert.ToInt32(precioTextBox.Text), Convert.ToInt32(cantidadNumericUpDown.Value)).ToString(); ;
+                importeTextBox.Text = BLL.RegistrodeMantenimientoBLL.CalcularImporte(Convert.ToDecimal(precioTextBox.Text), Convert.ToInt32(cantidadNumericUpDown.Value)).ToString(); ;
             
         }
 

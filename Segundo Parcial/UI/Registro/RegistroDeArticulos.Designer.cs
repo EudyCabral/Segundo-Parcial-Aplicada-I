@@ -91,11 +91,11 @@
             // 
             gananciaLabel.AutoSize = true;
             gananciaLabel.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            gananciaLabel.Location = new System.Drawing.Point(242, 143);
+            gananciaLabel.Location = new System.Drawing.Point(238, 144);
             gananciaLabel.Name = "gananciaLabel";
-            gananciaLabel.Size = new System.Drawing.Size(70, 15);
+            gananciaLabel.Size = new System.Drawing.Size(74, 15);
             gananciaLabel.TabIndex = 7;
-            gananciaLabel.Text = "Ganancia %:";
+            gananciaLabel.Text = "Ganancia % :";
             // 
             // precioLabel
             // 
@@ -230,6 +230,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BackgroundImage = global::Segundo_Parcial.Properties.Resources.pieza;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(509, 325);
             this.Controls.Add(this.precioTextBox);
             this.Controls.Add(this.gananciaTextBox);

@@ -33,7 +33,7 @@ namespace Segundo_Parcial.ENTIDADES
 
        
 
-        public void AgregarDetalle(int id, int mantenimientoId,int tallerId,int articulosId,string articulo,int cantidad,int precio,int importe)
+        public void AgregarDetalle(int id, int mantenimientoId,int tallerId,int articulosId,string articulo,int cantidad,decimal precio,decimal importe)
         {
                  this.Detalle.Add(new RegistrodeMantenimientoDetalle(id,mantenimientoId,tallerId,articulosId,articulo,cantidad,precio, importe));
         }

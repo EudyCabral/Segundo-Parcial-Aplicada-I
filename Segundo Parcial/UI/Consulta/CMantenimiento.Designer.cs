@@ -112,7 +112,7 @@
             this.MantenimientodataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MantenimientodataGridView.Location = new System.Drawing.Point(12, 88);
             this.MantenimientodataGridView.Name = "MantenimientodataGridView";
-            this.MantenimientodataGridView.Size = new System.Drawing.Size(539, 302);
+            this.MantenimientodataGridView.Size = new System.Drawing.Size(638, 302);
             this.MantenimientodataGridView.TabIndex = 22;
             // 
             // Buscarbutton
@@ -181,7 +181,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(563, 450);
+            this.ClientSize = new System.Drawing.Size(657, 450);
             this.Controls.Add(this.FechacheckBox);
             this.Controls.Add(this.HastadateTimePicker);
             this.Controls.Add(this.desdedateTimePicker);
