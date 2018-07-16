@@ -23,9 +23,14 @@ namespace Segundo_Parcial.BLL
                     if (contexto.registroEntradaDeArticulos.Add(registroEntradaDeArticulos) != null)
                 {
 
-                    RegistrodeArticulos articulo = BLL.RegistrodeArticulosBLL.Buscar(registroEntradaDeArticulos.ArticuloId);
+                    /*RegistrodeArticulos articulo = BLL.RegistrodeArticulosBLL.Buscar(registroEntradaDeArticulos.ArticuloId);
                     articulo.Inventario += registroEntradaDeArticulos.Cantidad;
                    BLL.RegistrodeArticulosBLL.Editar(articulo);
+                   */
+
+                    var Articulo = contexto.registrodeArticulos.Find(registroEntradaDeArticulos.ArticuloId);
+                    //Incrementar la cantidad
+                    Articulo.Inventario += registroEntradaDeArticulos.Cantidad;
 
                     contexto.SaveChanges();
                     paso = true;
@@ -52,9 +57,14 @@ namespace Segundo_Parcial.BLL
 
                 if (registroEntradaDeArticulos != null)
                 {
-                    RegistrodeArticulos articulo = BLL.RegistrodeArticulosBLL.Buscar(registroEntradaDeArticulos.ArticuloId);
+                   /* RegistrodeArticulos articulo = BLL.RegistrodeArticulosBLL.Buscar(registroEntradaDeArticulos.ArticuloId);
                     articulo.Inventario -= registroEntradaDeArticulos.Cantidad;
                     BLL.RegistrodeArticulosBLL.Editar(articulo);
+                    */
+
+                    var Articulo = contexto.registrodeArticulos.Find(registroEntradaDeArticulos.ArticuloId);
+                    //Reduce la cantidad
+                    Articulo.Inventario -= registroEntradaDeArticulos.Cantidad;
 
                     contexto.Entry(registroEntradaDeArticulos).State = EntityState.Deleted;
                 }
@@ -83,17 +93,32 @@ namespace Segundo_Parcial.BLL
             try
             {
 
+                /*  RegistroEntradaDeArticulos EntradaAnterior = BLL.RegistroEntradaDeArticulosBLL.Buscar(registroEntradaDeArticulos.EntradaId);
+
+                  //identificar la diferencia ya sea restada o sumada
+                  int diferencia;
+
+                  diferencia = registroEntradaDeArticulos.Cantidad - EntradaAnterior.Cantidad;
+
+                  //aplicar diferencia al inventario
+                  RegistrodeArticulos articulo = BLL.RegistrodeArticulosBLL.Buscar(registroEntradaDeArticulos.ArticuloId);
+                  articulo.Inventario += diferencia;
+                  BLL.RegistrodeArticulosBLL.Editar(articulo);
+                  */
+
+
+                //buscar entrada guardada
                 RegistroEntradaDeArticulos EntradaAnterior = BLL.RegistroEntradaDeArticulosBLL.Buscar(registroEntradaDeArticulos.EntradaId);
 
                 //identificar la diferencia ya sea restada o sumada
                 int diferencia;
-
                 diferencia = registroEntradaDeArticulos.Cantidad - EntradaAnterior.Cantidad;
 
-                //aplicar diferencia al inventario
-                RegistrodeArticulos articulo = BLL.RegistrodeArticulosBLL.Buscar(registroEntradaDeArticulos.ArticuloId);
-                articulo.Inventario += diferencia;
-                BLL.RegistrodeArticulosBLL.Editar(articulo);
+                //Buscar
+                var Articulo = contexto.registrodeArticulos.Find(EntradaAnterior.ArticuloId);
+
+                //aplicar diferencia al inventario 
+                Articulo.Inventario += diferencia;
 
                 contexto.Entry(registroEntradaDeArticulos).State = EntityState.Modified;
 

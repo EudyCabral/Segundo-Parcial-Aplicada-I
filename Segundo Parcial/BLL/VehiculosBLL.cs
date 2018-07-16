@@ -71,7 +71,7 @@ namespace Segundo_Parcial.BLL
 
             try
             {
-                
+
 
                 contexto.Entry(vehiculos).State = EntityState.Modified;
 
@@ -105,18 +105,20 @@ namespace Segundo_Parcial.BLL
 
         }
 
-       
 
-        public static List<Vehiculos> GetList(Expression<Func<Vehiculos,bool>>expression)
+
+        public static List<Vehiculos> GetList(Expression<Func<Vehiculos, bool>> expression)
         {
             List<Vehiculos> vehiculos = new List<Vehiculos>();
             Contexto contexto = new Contexto();
 
-            try {
+            try
+            {
                 vehiculos = contexto.vehiculos.Where(expression).ToList();
                 contexto.Dispose();
 
-            } catch (Exception) { throw; }
+            }
+            catch (Exception) { throw; }
             return vehiculos;
         }
     }
