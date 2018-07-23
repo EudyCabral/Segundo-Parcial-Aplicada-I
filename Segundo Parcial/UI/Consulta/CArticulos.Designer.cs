@@ -59,6 +59,7 @@
             this.FiltrocomboBox.Name = "FiltrocomboBox";
             this.FiltrocomboBox.Size = new System.Drawing.Size(121, 21);
             this.FiltrocomboBox.TabIndex = 0;
+            this.FiltrocomboBox.SelectedIndexChanged += new System.EventHandler(this.FiltrocomboBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -68,6 +69,7 @@
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Filtro:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -77,6 +79,7 @@
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Criterio:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // CriteriotextBox
             // 
@@ -84,6 +87,7 @@
             this.CriteriotextBox.Name = "CriteriotextBox";
             this.CriteriotextBox.Size = new System.Drawing.Size(168, 20);
             this.CriteriotextBox.TabIndex = 3;
+            this.CriteriotextBox.TextChanged += new System.EventHandler(this.CriteriotextBox_TextChanged);
             // 
             // ArticulosdataGridView
             // 
@@ -92,6 +96,7 @@
             this.ArticulosdataGridView.Name = "ArticulosdataGridView";
             this.ArticulosdataGridView.Size = new System.Drawing.Size(494, 302);
             this.ArticulosdataGridView.TabIndex = 10;
+            this.ArticulosdataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ArticulosdataGridView_CellContentClick);
             // 
             // GeneralerrorProvider
             // 
@@ -105,6 +110,7 @@
             this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Consulta";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Imprimirbutton
             // 

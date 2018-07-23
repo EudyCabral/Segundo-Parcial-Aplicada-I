@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Segundo_Parcial.UI.Consulta
 {
-    public partial class CVehiculos : Form
+    public partial class CVehiculos: Form
     {
         public CVehiculos()
         {
@@ -20,13 +20,13 @@ namespace Segundo_Parcial.UI.Consulta
 
         private void Buscarbutton_Click(object sender, EventArgs e)
         {
-            Expression<Func<Vehiculos,bool>> filtro = x => true;
+            Expression<Func<Vehiculos, bool>>filtro = x => true;
 
-            switch(FiltrocomboBox.SelectedIndex)
+            switch (FiltrocomboBox.SelectedIndex)
             {
                 case 0://Id
 
-                    if(Validar(1))
+                    if (Validar(1))
                     {
                         MessageBox.Show("Favor Llenar Casilla ", "Fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -48,8 +48,12 @@ namespace Segundo_Parcial.UI.Consulta
                             return;
                         }
                     }
+
+
                     break;
+
                 case 1://Descripcion
+
                     if (Validar(1))
                     {
                         MessageBox.Show("Favor Llenar Casilla ", "Fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -71,7 +75,9 @@ namespace Segundo_Parcial.UI.Consulta
                         }
                     }
                     break;
-                case 2://Total Mantenimiento
+
+                case 2://Mantenimiento
+
                     if (Validar(1))
                     {
                         MessageBox.Show("Favor Llenar Casilla ", "Fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,8 +90,8 @@ namespace Segundo_Parcial.UI.Consulta
                     }
                     else
                     {
-                        decimal mantenimiento = Convert.ToDecimal(CriteriotextBox.Text);
-                        filtro = x => x.Mantenimiento == mantenimiento;
+                        decimal costo = Convert.ToDecimal(CriteriotextBox.Text);
+                        filtro = x => x.Mantenimiento == costo;
 
 
                         if (BLL.VehiculosBLL.GetList(filtro).Count() == 0)
@@ -95,13 +101,15 @@ namespace Segundo_Parcial.UI.Consulta
                         }
                     }
                     break;
-                case 3://Todo
 
+              
+                case 6://Todo
                     filtro = x => true;
-                        break;
+                    break;
             }
 
-            VehiculodataGridView.DataSource = BLL.VehiculosBLL.GetList(filtro);
+            VehiculosdataGridView.DataSource = BLL.VehiculosBLL.GetList(filtro);
+            CriteriotextBox.Clear();
             GeneralerrorProvider.Clear();
         }
 
@@ -128,11 +136,6 @@ namespace Segundo_Parcial.UI.Consulta
             }
 
             return paso;
-        }
-
-        private void CVehiculos_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

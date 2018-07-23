@@ -145,7 +145,7 @@
             // 
             this.vehiculosToolStripMenuItem.Image = global::Segundo_Parcial.Properties.Resources.icons8_Convertible_32;
             this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
-            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vehiculosToolStripMenuItem.Text = "Vehiculos";
             this.vehiculosToolStripMenuItem.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
             // 
@@ -153,7 +153,7 @@
             // 
             this.articulosToolStripMenuItem.Image = global::Segundo_Parcial.Properties.Resources.icons8_Settings_32;
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
-            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.articulosToolStripMenuItem.Text = "Articulos";
             this.articulosToolStripMenuItem.Click += new System.EventHandler(this.articulosToolStripMenuItem_Click);
             // 
@@ -162,7 +162,7 @@
             this.mantenimientoToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mantenimientoToolStripMenuItem.Image = global::Segundo_Parcial.Properties.Resources.Mantenimiento3;
             this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
-            this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
             this.mantenimientoToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoToolStripMenuItem_Click);
             // 

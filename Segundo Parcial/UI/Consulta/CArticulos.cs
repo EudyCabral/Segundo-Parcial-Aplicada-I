@@ -227,5 +227,35 @@ namespace Segundo_Parcial.UI.Consulta
         {
 
         }
+
+        private void ArticulosdataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CriteriotextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FiltrocomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -133,16 +133,6 @@
         tBAzZmCE0gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="registroToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAARdJREFUWEft
-        lk8OwUAUh3sNC07jCm7gCGJv0RuIGyDsLWhXYiOxwlIrxMKmCYlMdUqfvKYjZUSnZdDoL/k2zfvzpe0k
-        o2TJEo5mQGFgnkoy6S8gH6zjoy1pSzNdkMqSNoN1fHTT7T5seiO4I1jHJxOII7Den8EinhBYy/qEBXLV
-        KYeqWddBccP6hAVw2T2dGbkOsmM4YC3rExaQRXoEoj4Bcb3gBUcHa1mfsMDXf8IoVrszbA+eEFjL+t4m
-        kJT0CNSGxxvqE4cblgRhgXKPgDqyoTGxoaITXwKf40m4Px0iJBIYbxyglPoSTACHPTohUSQSaM+PvgS+
-        CSbwKrEEwnxcQBa/LfD1Syley3XDLcrk6bU8yx9GUS5xQ28rW0gMrwAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="registroDeMantenimientoToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAA1pJREFUWEft
@@ -231,6 +221,16 @@
         ah+Il80EWXsNv2xIubMbVu80/F8h8Qpchk4Mk5yIqHbD8xuMv93UFxEBn8mfhNaewkcL2LjPWNBDTtQW
         3d9+iqJsj8h6AydNH8bQ1kBMaObIRyirHuBGe0ExNknWD8qqBzCadRtblLUJlFUP0MszpKdukq+cqKId
         Qdm/gpqaP6odjKk67Lz9AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="registroToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAARdJREFUWEft
+        lk8OwUAUh3sNC07jCm7gCGJv0RuIGyDsLWhXYiOxwlIrxMKmCYlMdUqfvKYjZUSnZdDoL/k2zfvzpe0k
+        o2TJEo5mQGFgnkoy6S8gH6zjoy1pSzNdkMqSNoN1fHTT7T5seiO4I1jHJxOII7Den8EinhBYy/qEBXLV
+        KYeqWddBccP6hAVw2T2dGbkOsmM4YC3rExaQRXoEoj4Bcb3gBUcHa1mfsMDXf8IoVrszbA+eEFjL+t4m
+        kJT0CNSGxxvqE4cblgRhgXKPgDqyoTGxoaITXwKf40m4Px0iJBIYbxyglPoSTACHPTohUSQSaM+PvgS+
+        CSbwKrEEwnxcQBa/LfD1Syley3XDLcrk6bU8yx9GUS5xQ28rW0gMrwAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
