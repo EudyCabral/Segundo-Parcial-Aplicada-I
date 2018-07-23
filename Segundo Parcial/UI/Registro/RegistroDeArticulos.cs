@@ -259,3 +259,4 @@ namespace Segundo_Parcial.UI.Registro
        
     }
 }
+

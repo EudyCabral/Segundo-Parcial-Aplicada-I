@@ -47,7 +47,8 @@ namespace Segundo_Parcial.UI.Consulta
 
                         if (FechacheckBox.Checked == true)
                         {
-                            filtro = x => x.MantenimientoId == id &&(desdedateTimePicker.Value >= x.Fecha && HastadateTimePicker.Value <= x.Fecha);
+                            filtro = x => x.MantenimientoId == id && (x.Fecha.Day >= desdedateTimePicker.Value.Day) && (x.Fecha.Month >= desdedateTimePicker.Value.Month) && (x.Fecha.Year >= desdedateTimePicker.Value.Year) && (x.Fecha.Day <= HastadateTimePicker.Value.Day) && (x.Fecha.Month <= HastadateTimePicker.Value.Month) && (x.Fecha.Year <= HastadateTimePicker.Value.Year);
+                            //(x.Fecha >= desdedateTimePicker.Value &&   x.Fecha <= HastadateTimePicker.Value);
                         }
                         else
                         {
@@ -83,7 +84,7 @@ namespace Segundo_Parcial.UI.Consulta
 
                         if (FechacheckBox.Checked == true)
                         {
-                            filtro = x => x.VehiculoId == vehiculoid  && (desdedateTimePicker.Value >= x.Fecha && HastadateTimePicker.Value <= x.Fecha);
+                            filtro = x => x.VehiculoId == vehiculoid  && (x.Fecha.Day >= desdedateTimePicker.Value.Day) && (x.Fecha.Month >= desdedateTimePicker.Value.Month) && (x.Fecha.Year >= desdedateTimePicker.Value.Year) && (x.Fecha.Day <= HastadateTimePicker.Value.Day) && (x.Fecha.Month <= HastadateTimePicker.Value.Month) && (x.Fecha.Year <= HastadateTimePicker.Value.Year);
                         }
                         else
                         {
@@ -118,8 +119,7 @@ namespace Segundo_Parcial.UI.Consulta
 
                         if (FechacheckBox.Checked == true)
                         {
-                            filtro = x => x.Subtotal == subtotal && (desdedateTimePicker.Value >= x.Fecha && HastadateTimePicker.Value <= x.Fecha);
-
+                            filtro = x => x.Subtotal == subtotal && (x.Fecha.Day >= desdedateTimePicker.Value.Day) && (x.Fecha.Month >= desdedateTimePicker.Value.Month) && (x.Fecha.Year >= desdedateTimePicker.Value.Year) && (x.Fecha.Day <= HastadateTimePicker.Value.Day) && (x.Fecha.Month <= HastadateTimePicker.Value.Month) && (x.Fecha.Year <= HastadateTimePicker.Value.Year);
                         }
                         else
                         {
@@ -153,7 +153,7 @@ namespace Segundo_Parcial.UI.Consulta
 
                         if (FechacheckBox.Checked == true)
                         {
-                            filtro = x => x.itbis == itbis && (desdedateTimePicker.Value >= x.Fecha && HastadateTimePicker.Value <= x.Fecha);
+                            filtro = x => x.itbis == itbis && (x.Fecha.Day >= desdedateTimePicker.Value.Day) && (x.Fecha.Month >= desdedateTimePicker.Value.Month) && (x.Fecha.Year >= desdedateTimePicker.Value.Year) && (x.Fecha.Day <= HastadateTimePicker.Value.Day) && (x.Fecha.Month <= HastadateTimePicker.Value.Month) && (x.Fecha.Year <= HastadateTimePicker.Value.Year);
                         }
                         else
                         {
@@ -186,7 +186,7 @@ namespace Segundo_Parcial.UI.Consulta
                         decimal total = Convert.ToDecimal(CriteriotextBox.Text);
                         if (FechacheckBox.Checked == true)
                         {
-                            filtro = x => x.Total == total  && (desdedateTimePicker.Value >= x.Fecha && HastadateTimePicker.Value <= x.Fecha);
+                            filtro = x => x.Total == total  && (x.Fecha.Day >= desdedateTimePicker.Value.Day) && (x.Fecha.Month >= desdedateTimePicker.Value.Month) && (x.Fecha.Year >= desdedateTimePicker.Value.Year) && (x.Fecha.Day <= HastadateTimePicker.Value.Day) && (x.Fecha.Month <= HastadateTimePicker.Value.Month) && (x.Fecha.Year <= HastadateTimePicker.Value.Year);
                         }
                         else
                         {

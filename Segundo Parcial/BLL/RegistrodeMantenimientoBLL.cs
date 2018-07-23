@@ -154,8 +154,6 @@ namespace Segundo_Parcial.BLL
                     {
                         contexto.registrodeArticulos.Find(item.ArticulosId).Inventario -= item.Cantidad;
 
-
-
                         var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
                         contexto.Entry(item).State = estado;
                     }
