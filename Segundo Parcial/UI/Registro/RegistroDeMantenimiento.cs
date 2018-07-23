@@ -168,6 +168,9 @@ namespace Segundo_Parcial.UI.Registro
 
         private void Agregarbutton_Click(object sender, EventArgs e)
         {
+
+            
+
             List<RegistrodeMantenimientoDetalle> detalle = new List<RegistrodeMantenimientoDetalle>();
 
            
@@ -234,7 +237,8 @@ namespace Segundo_Parcial.UI.Registro
                 Total = BLL.RegistrodeMantenimientoBLL.Total(Convert.ToDecimal(subtotaltextBox.Text), Convert.ToDecimal(ItbistextBox.Text));
 
                 TotaltextBox.Text = Total.ToString();
-                
+
+            cantidadNumericUpDown.Value = 0;
         }
 
 
